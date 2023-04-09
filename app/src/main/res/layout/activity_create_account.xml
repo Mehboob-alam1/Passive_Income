@@ -5,17 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkcolor"
+    android:background="@color/edittext_bg"
     tools:context=".ui.CreateAccountActivity" >
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/darkcolor"
+    android:layout_height="wrap_content"
+    android:background="@color/edittext_bg"
     tools:context=".ui.CreateAccountActivity">
 
 
@@ -174,6 +173,25 @@
             android:background="@drawable/edittext_bg"
             android:hint="Enter referral ID"
             android:id="@+id/etReferralId"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="Enter your address"
+            android:id="@+id/etAddress"
             android:padding="16dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"

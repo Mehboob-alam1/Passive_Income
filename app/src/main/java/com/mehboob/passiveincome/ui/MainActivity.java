@@ -38,22 +38,10 @@ private ActivityMainBinding binding;
                 "All the best!"));
 
 
-        binding.btnStart.setOnClickListener(view -> {
-            binding.imgLogo.setVisibility(View.GONE);
 
-
-            binding.btnStart.setVisibility(View.INVISIBLE);
-            binding.btnNext.setVisibility(View.VISIBLE);
-            binding.dotsIndicator.setVisibility(View.VISIBLE);
-            binding.viewpager2.setVisibility(View.VISIBLE);
-
-
-            adapter = new ViewPagerAdapter(MainActivity.this);
-            binding.viewpager2.setAdapter(adapter);
-            binding.dotsIndicator.attachTo(binding.viewpager2);
-
-        });
-
+        adapter = new ViewPagerAdapter(MainActivity.this);
+        binding.viewpager2.setAdapter(adapter);
+        binding.dotsIndicator.attachTo(binding.viewpager2);
         binding.viewpager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
