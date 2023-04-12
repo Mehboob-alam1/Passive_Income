@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "408409420745",
+    "project_id": "passive-income-fce8e",
+    "storage_bucket": "passive-income-fce8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408409420745:android:3822e14a6b80cd5f4fee18",
+        "android_client_info": {
+          "package_name": "com.mehboob.passiveincome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408409420745-qgh7rpghfgg8fmsdo2j4832ihjim5h57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mehboob.passiveincome",
+            "certificate_hash": "59a1de8e5bad28d8e31b340939ecdf50802d256f"
+          }
+        },
+        {
+          "client_id": "408409420745-6lsk45qkg87oj3sg5h9hp8eqngpfhino.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6X1GvileFlCG-RiSCWRYHKizj70bf3L0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408409420745-6lsk45qkg87oj3sg5h9hp8eqngpfhino.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

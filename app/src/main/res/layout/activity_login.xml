@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -71,28 +70,22 @@
             android:text="Password"
             android:textColor="@color/white" />
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/white"
-            android:hint="Enter your password">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/etpassword"
-                android:background="@drawable/edittext_bg"
-                android:inputType="textPassword"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            android:drawableRight="@drawable/ic_password_toggle"
+            android:drawableEnd="@drawable/ic_password_toggle"/>
 
-                android:textSize="14sp"
-                android:padding="16dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -123,17 +116,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/btn_background"
+    android:id="@+id/btnSingIn"
+    android:layout_height="50dp" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+     android:id="@+id/textSign"
+        android:textAlignment="center"
+        android:text="Sign in"
+
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+  android:visibility="invisible"
+        android:id="@+id/progressSignIn"
+      android:layout_centerInParent="true"
+         />
+</RelativeLayout>
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSingIn"
-            android:background="@drawable/btn_background"
-            android:text="Sign in"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_signup"

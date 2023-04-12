@@ -11,6 +11,8 @@
     <color name="white">#FFFFFFFF</color>
 <color name="edittext_bg">#000F26</color>
 <color name="darkcolorbg">#051835</color>
+<color name="red">#E9221C</color>
+<color name="green">#1FAF38</color>
 
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#CCCCCC</color>
