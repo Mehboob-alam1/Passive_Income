@@ -1,4 +1,4 @@
-package com.mehboob.passiveincome.ui;
+package com.mehboob.passiveincome.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;

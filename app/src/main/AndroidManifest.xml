@@ -14,7 +14,7 @@
         android:theme="@style/Theme.PassiveIncome"
         tools:targetApi="31">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.activities.HomeActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">
             <meta-data
@@ -22,7 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true"
             android:theme="@style/noactiondisplay">
             <meta-data
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.CreateAccountActivity"
+            android:name=".ui.activities.CreateAccountActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">
             <meta-data
@@ -44,7 +44,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activities.LoginActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">
             <meta-data
@@ -52,7 +52,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true"
             android:theme="@style/noactiondisplay">
             <meta-data

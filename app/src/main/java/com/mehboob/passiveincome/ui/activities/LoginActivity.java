@@ -1,4 +1,4 @@
-package com.mehboob.passiveincome.ui;
+package com.mehboob.passiveincome.ui.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.ActivityLoginBinding;
 
