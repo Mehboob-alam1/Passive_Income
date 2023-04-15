@@ -35,6 +35,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.container, fragment).commit();
 
 
+
+
+
     }
 
     @Override
@@ -44,9 +47,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home:
                 fragment = new HomeFragment();
                 break;
-            case R.id.nav_wallet:
-                fragment = new WalletFragment();
-                break;
+
             case R.id.nav_profile:
                 fragment = new AccountFragment();
                 break;

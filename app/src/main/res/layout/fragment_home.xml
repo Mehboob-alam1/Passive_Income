@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/edittext_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.HomeFragment" >
+
+
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/edittext_bg"
     tools:context=".ui.fragments.HomeFragment">
 
     <RelativeLayout
@@ -561,87 +567,83 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3">
 
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/purple"
-            android:weightSum="3"
-            android:orientation="horizontal">
+            android:layout_height="100dp"
+            android:background="@color/purple">
 
             <LinearLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/layout_txt"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Refer and Earn" />
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtReferTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
+                    android:text="Refer and Earn"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
                     android:text="You get the chance to win lots of prizes\n
 by inviting your friends to use pasiveincome!" />
+
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/layout_txt">
-
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/img_gift"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/white_circle"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.22"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:padding="5dp"
+                    android:src="@drawable/ic_gift" />
 
                 <ImageView
-                    android:id="@+id/img_card"
+                    android:id="@+id/imageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-
-                    android:padding="4dp"
-                    android:src="@drawable/ic_gift_card"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.27"
-                    app:layout_constraintStart_toStartOf="@+id/img_gift"
-                    app:layout_constraintTop_toTopOf="@+id/img_gift"
-                    app:layout_constraintVertical_bias="0.55" />
-
-                <ImageView
-                    android:id="@+id/img_question"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/img_gift"
+                    android:src="@drawable/ic_question" />
 
 
-                    android:padding="4dp"
-                    android:src="@drawable/ic_question"
-                    app:layout_constraintBottom_toBottomOf="@+id/img_gift"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.27"
-                    app:layout_constraintStart_toStartOf="@+id/img_card"
-                    app:layout_constraintTop_toTopOf="@+id/img_gift"
-                    app:layout_constraintVertical_bias="0.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </RelativeLayout>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
