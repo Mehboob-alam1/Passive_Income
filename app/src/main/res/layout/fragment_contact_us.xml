@@ -1,14 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ContactUsFragment">
+    android:background="@color/edittext_bg"
+    tools:context=".ui.activities.InviteFriendActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Mehboob Alam"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:textColor="@color/white"
+     android:text="031719181460"
+     android:id="@+id/txtPhoneNumber"
+     android:padding="16dp"
+     android:background="@drawable/bg_icons"
+     android:textAlignment="center"
+     android:layout_margin="12dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="mehboobcodes@gmail.com"
+            android:padding="16dp"
+            android:id="@+id/txtGmail"
+            android:background="@drawable/bg_icons"
+            android:textAlignment="center"
+            android:layout_margin="12dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Konodass,Gilgit"
+            android:id="@+id/txtAddress"
+            android:padding="16dp"
+            android:background="@drawable/bg_icons"
+            android:textAlignment="center"
+            android:layout_margin="12dp"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_icons"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referral code : 123456"
+                android:layout_weight="3"
+                android:id="@+id/txtReferalCode"
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/img_copy_refer_code"
+                android:src="@drawable/ic_copy"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Invite Friends"
+            android:id="@+id/txtInviteFriend"
+            android:padding="16dp"
+            android:background="@drawable/bg_icons"
+            android:textAlignment="center"
+            android:layout_margin="12dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/btnInvitations"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_icons"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invitations"
+                android:layout_weight="3"
+
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                android:src="@drawable/ic_forward"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Logout"
+            android:id="@+id/btnLogout"
+            android:padding="16dp"
+            android:background="@drawable/bg_icons"
+            android:textAlignment="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+           android:layout_marginTop="24dp"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

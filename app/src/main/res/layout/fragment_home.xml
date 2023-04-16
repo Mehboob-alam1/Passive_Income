@@ -271,7 +271,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnBasicPackage"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -287,7 +287,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/btnBasicPackage"
                 android:layout_width="50dp"
                 android:layout_height="22dp"
                 android:background="@drawable/bg_start"
@@ -378,13 +378,13 @@
             android:background="@color/white" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnStandardPackage"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/btnStandardPackage"
                 android:layout_width="50dp"
                 android:layout_height="22dp"
                 android:background="@drawable/bg_start"
@@ -409,7 +409,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
+                app:layout_constraintTop_toBottomOf="@+id/btnStandardPackage">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -474,13 +474,13 @@
             android:background="@color/white" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnPremiumPackage"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/btnPremiumPackage"
                 android:layout_width="50dp"
                 android:layout_height="22dp"
                 android:background="@drawable/bg_start"
@@ -505,7 +505,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
+                app:layout_constraintTop_toBottomOf="@+id/btnPremiumPackage">
 
                 <ImageView
                     android:layout_width="20dp"

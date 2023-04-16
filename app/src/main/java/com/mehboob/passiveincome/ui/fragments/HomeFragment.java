@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.FragmentHomeBinding;
 import com.mehboob.passiveincome.ui.activities.DepositActivity;
+import com.mehboob.passiveincome.ui.activities.WithdrawActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -29,8 +30,29 @@ private FragmentHomeBinding binding;
             startActivity(new Intent(getContext(), DepositActivity.class));
         });
 
+        binding.btnWithdraw.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), WithdrawActivity.class));
+        });
+
+
+binding.btnBasicPackage.setOnClickListener(v -> {
+    startPackage("Basic");
+});
+        binding.btnStandardPackage.setOnClickListener(v -> {
+            startPackage("Standard");
+        });
+
+        binding.btnPremiumPackage.setOnClickListener(v -> {
+            startPackage("Premium");
+        });
 
 
         return binding.getRoot();
+    }
+
+    private void startPackage(String package_name){
+        Intent intent= new Intent(getContext(),DepositActivity.class);
+        intent.putExtra("package",package_name);
+        getContext().startActivity(intent);
     }
 }

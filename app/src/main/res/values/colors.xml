@@ -14,6 +14,9 @@
 <color name="red">#E9221C</color>
 <color name="green">#1FAF38</color>
 
+    <color name="light_bluish">#061E44</color>
+    <color name="more_light_bluish">#0D2F4E</color>
+
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#CCCCCC</color>
     <color name="colorAccent">#474954</color>
