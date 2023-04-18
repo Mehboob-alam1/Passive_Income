@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:text="Invite friend and get 15%"
         android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +48,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="3"
                 android:text="Referal Code"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="12sp"
 
                 android:textColor="@color/white" />
 
@@ -65,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="123456"
-
+android:textSize="10sp"
                     android:textColor="@color/white" />
 
                 <ImageView
@@ -78,13 +81,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-
+android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="3"
                 android:text="Share link"
-
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -102,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="App Link"
-
+android:textSize="10sp"
                     android:textColor="@color/white" />
 
                 <ImageView
@@ -124,7 +127,7 @@
                 android:text="Send your invitation link to your friends
 register and invest through your link with
 reference code you will get 15% from every member"
-
+android:textSize="10sp"
                 android:textColor="@color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -164,7 +167,7 @@ reference code you will get 15% from every member"
                     android:layout_weight="3"
                     android:text="My Invitation Status"
                     android:textAlignment="center"
-
+                    android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -173,7 +176,7 @@ reference code you will get 15% from every member"
                     android:layout_height="18dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/btn_background_rounded"
-
+                    android:fontFamily="@font/poppins_light"
                     android:gravity="center"
                     android:text="more"
                     android:textColor="@color/black"
@@ -254,7 +257,8 @@ reference code you will get 15% from every member"
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="level"
+                            android:text="Level"
+                            android:fontFamily="@font/poppins_light"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -276,6 +280,7 @@ reference code you will get 15% from every member"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Invited"
+                            android:fontFamily="@font/poppins_light"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -297,6 +302,7 @@ reference code you will get 15% from every member"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Upgraded"
+                            android:fontFamily="@font/poppins_light"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>

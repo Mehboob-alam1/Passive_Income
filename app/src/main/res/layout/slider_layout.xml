@@ -29,7 +29,7 @@
         android:layout_marginTop="24dp"
         android:text="Quick and Seure"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/img_slider"
         app:layout_constraintStart_toStartOf="@+id/img_slider"
@@ -42,7 +42,7 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
         android:textSize="12sp"
-
+android:fontFamily="@font/poppins_regular"
 
         app:layout_constraintEnd_toEndOf="@+id/txt_title"
         app:layout_constraintStart_toStartOf="@+id/txt_title"

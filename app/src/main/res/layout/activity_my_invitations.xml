@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/edittext_bg"
-    tools:context=".ui.activities.AccountSelectionActivity">
-
+    tools:context=".ui.activities.MyInvitationsActivity">
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="30dp"
@@ -18,43 +17,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Account Selection"
-        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        android:text="My Invitations"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="5dp"
+        app:tabTextAppearance="@style/tab_text"
+        android:background="@drawable/btn_background_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:tabGravity="fill"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/white" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/viewpager2"
+        android:background="@color/white"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/light_bluish">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_accounts" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

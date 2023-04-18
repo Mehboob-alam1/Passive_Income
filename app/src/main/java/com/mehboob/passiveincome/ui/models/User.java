@@ -2,9 +2,13 @@ package com.mehboob.passiveincome.ui.models;
 
 public class User {
 
-    private String email,password,first_name,sur_name,phone_number,referral_id,address,user_id;
+    private String email,password,first_name,sur_name,phone_number,referral_id,address,user_id,user_image;
 
-    public User(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address, String user_id) {
+
+    public User() {
+    }
+
+    public User(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address, String user_id, String user_image) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
@@ -13,10 +17,19 @@ public class User {
         this.referral_id = referral_id;
         this.address = address;
         this.user_id = user_id;
+        this.user_image = user_image;
     }
 
     public String getUser_id() {
         return user_id;
+    }
+
+    public String getUser_image() {
+        return user_image;
+    }
+
+    public void setUser_image(String user_image) {
+        this.user_image = user_image;
     }
 
     public void setUser_id(String user_id) {

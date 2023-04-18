@@ -47,18 +47,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User name"
+                android:textSize="12sp"
                 android:textColor="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="10sp"
                 android:text="Take a walk, you’ll be glad you did"
                 android:textColor="@color/white" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_notification" />
@@ -145,6 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Deposit"
+                    android:textSize="10sp"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -180,6 +183,7 @@
                     android:layout_height="wrap_content"
                     android:text="Withdraw"
                     android:textAlignment="center"
+                    android:textSize="10sp"
                     android:textColor="@color/white" />
 
 
@@ -214,6 +218,7 @@
                     android:layout_height="wrap_content"
                     android:text="About us"
                     android:textAlignment="center"
+                    android:textSize="10sp"
                     android:textColor="@color/white" />
 
 
@@ -247,6 +252,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Contact us"
+                    android:textSize="10sp"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -333,6 +339,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
                         android:text="Basic package for 3 days"
                         android:textColor="@color/white" />
 
@@ -341,7 +348,7 @@
                         android:layout_height="wrap_content"
                         android:text="Amount invested"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -356,14 +363,14 @@
                         android:layout_height="wrap_content"
                         android:text="3.2% /day"
                         android:textColor="@color/red"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1000 - 5000"
                         android:textColor="@color/green"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -429,6 +436,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
                         android:text="Standard package for 7 days"
                         android:textColor="@color/white" />
 
@@ -437,7 +445,7 @@
                         android:layout_height="wrap_content"
                         android:text="Amount invested"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -452,14 +460,14 @@
                         android:layout_height="wrap_content"
                         android:text="4.2% /day"
                         android:textColor="@color/red"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5000 - 20000"
                         android:textColor="@color/green"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -525,6 +533,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
                         android:text="Premium package for 15 days"
                         android:textColor="@color/white" />
 
@@ -533,7 +542,7 @@
                         android:layout_height="wrap_content"
                         android:text="Amount invested"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -548,14 +557,14 @@
                         android:layout_height="wrap_content"
                         android:text="5.2% /day"
                         android:textColor="@color/red"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20000 - 50000"
                         android:textColor="@color/green"
-                        android:textSize="12sp" />
+                        android:textSize="8sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -597,7 +606,7 @@
                     android:id="@+id/txtReferTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+android:textSize="12sp"
                     android:text="Refer and Earn"
                     android:textColor="@color/black" />
 
@@ -605,7 +614,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+android:textSize="10sp"
                     android:text="You get the chance to win lots of prizes\n
 by inviting your friends to use pasiveincome!" />
 

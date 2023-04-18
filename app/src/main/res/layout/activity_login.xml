@@ -16,8 +16,8 @@
         android:layout_marginTop="64dp"
         android:text="Do good"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="22sp"
+        android:fontFamily="@font/poppins_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,9 @@
         android:text="anyway!"
         android:textColor="@color/purple"
         android:textSize="22sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
+
+
         app:layout_constraintStart_toStartOf="@+id/txt_doGood"
         app:layout_constraintTop_toBottomOf="@id/txt_doGood" />
 
@@ -49,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email or Username"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white" />
 
         <EditText
@@ -57,6 +60,7 @@
             android:id="@+id/etEmail"
             android:layout_marginTop="8dp"
             android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
             android:background="@drawable/edittext_bg"
             android:hint="Enter email or username"
             android:padding="16dp"
@@ -67,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="Password"
             android:textColor="@color/white" />
 
@@ -77,6 +82,7 @@
             android:layout_marginTop="8dp"
             android:hint="Enter your password"
             android:inputType="textPassword"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textColorHint="@color/white"
@@ -101,7 +107,7 @@
         android:layout_marginEnd="16dp"
         android:text="Forgot password?"
         android:textColor="@color/white"
-        android:textStyle="bold"
+      android:fontFamily="@font/poppins_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

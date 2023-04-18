@@ -18,6 +18,7 @@ import com.mehboob.passiveincome.BuildConfig;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.FragmentAccountBinding;
 import com.mehboob.passiveincome.databinding.FragmentHomeBinding;
+import com.mehboob.passiveincome.ui.activities.MyInvitationsActivity;
 
 
 public class AccountFragment extends Fragment {
@@ -32,7 +33,9 @@ private FragmentAccountBinding binding;
 binding.imgCopyReferCode.setOnClickListener(v -> {
     copyTextToClipboard(binding.txtReferalCode.getText().toString());
 });
-
+binding.btnMore.setOnClickListener(v -> {
+    startActivity(new Intent(requireContext(), MyInvitationsActivity.class));
+});
 binding.btnShareApp.setOnClickListener(v -> {
     shareApp();
 });

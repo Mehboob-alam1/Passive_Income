@@ -24,7 +24,7 @@
         android:layout_gravity="bottom"
         android:background="@color/edittext_bg"
         app:itemIconTint="@drawable/bottom_nav_color"
-        app:itemTextColor="@color/purple"
+
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"

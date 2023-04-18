@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,43 +16,84 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.FragmentAccountBinding;
 import com.mehboob.passiveincome.databinding.FragmentContactUsBinding;
+import com.mehboob.passiveincome.ui.activities.HomeActivity;
 import com.mehboob.passiveincome.ui.activities.LoginActivity;
+import com.mehboob.passiveincome.ui.models.User;
 
 
 public class ContactUsFragment extends Fragment {
 
-private FragmentContactUsBinding binding;
-
+    private FragmentContactUsBinding binding;
+    private DatabaseReference mRef;
+    private User user;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding= FragmentContactUsBinding.inflate(inflater,container,false);
+        binding = FragmentContactUsBinding.inflate(inflater, container, false);
 
-binding.imgCopyReferCode.setOnClickListener(v -> {
-    copyTextToClipboard(binding.txtReferalCode.getText().toString());
-});
+        mRef = FirebaseDatabase.getInstance().getReference("Users");
 
-binding.btnLogout.setOnClickListener(v -> {
-   signOut();
 
-});
-binding.txtInviteFriend.setOnClickListener(v -> {
-    Fragment fragment = new AccountFragment();
-    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    fragmentTransaction.replace(R.id.container, fragment);
-    fragmentTransaction.addToBackStack(null);
-    fragmentTransaction.commit();
-});
+        fetchData();
+        binding.imgCopyReferCode.setOnClickListener(v -> {
+            copyTextToClipboard(binding.txtReferralCode.getText().toString());
+        });
+
+        binding.btnLogout.setOnClickListener(v -> {
+            signOut();
+
+        });
+        binding.txtInviteFriend.setOnClickListener(v -> {
+            Fragment fragment = new AccountFragment();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
 
         return binding.getRoot();
+    }
+
+    private void fetchData() {
+        Context context = ((HomeActivity) getActivity()).getContext();
+        mRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            user = snapshot.getValue(User.class);
+
+                            Glide.with(context).load(user.getUser_image()).placeholder(R.drawable.profile)
+                                    .into(binding.profileImage);
+
+                            binding.txtUserName.setText(user.getFirst_name() + " " + user.getSur_name());
+                            binding.txtPhoneNumber.setText(user.getPhone_number());
+                            binding.txtGmail.setText(user.getEmail());
+                            binding.txtAddress.setText(user.getAddress());
+                            binding.txtReferralCode.setText(user.getReferral_id());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void signOut() {
@@ -75,6 +117,6 @@ binding.txtInviteFriend.setOnClickListener(v -> {
         clipboardManager.setPrimaryClip(clipData);
 
         // Show a toast message to indicate that the text has been copied
-        Toast.makeText(getContext(), "Text copied to clipboard " +text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Text copied to clipboard " + text, Toast.LENGTH_SHORT).show();
     }
 }

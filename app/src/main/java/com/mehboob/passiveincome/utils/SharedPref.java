@@ -24,4 +24,6 @@ public class SharedPref {
 
         return sharedPreferences.getString(ACCOUNT_SELECTED,"Easypaisa");
     }
+
+
 }
