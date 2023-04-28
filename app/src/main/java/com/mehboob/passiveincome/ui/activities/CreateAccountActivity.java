@@ -125,7 +125,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         binding.textCreate.setVisibility(View.VISIBLE);
                         binding.progressSignUp.setVisibility(View.GONE);
 
-                        uploadImage(uri,new User(email, password, first_name, sur_name, phone_number, userReferralCode, address, userId,""));
+                        uploadImage(uri,new User(email, password, first_name, sur_name, phone_number, userReferralCode, address, userId,"","",""));
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -153,7 +153,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        startActivity(new Intent(CreateAccountActivity.this, LoginActivity.class));
+        startActivity(new Intent(CreateAccountActivity.this, ScnaFrontActivity.class));
         finish();
     }
 
@@ -183,7 +183,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri downloadUrl) {
 
-                      uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString()));
+                      uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"",""));
 
                         Toast.makeText(getApplicationContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                     }

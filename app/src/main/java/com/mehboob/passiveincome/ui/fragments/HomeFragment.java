@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +75,12 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                   user=  snapshot.getValue(User.class);
-                    Glide.with(context).load(user.getUser_image()).placeholder(R.drawable.profile).into(binding.userImage);
+                  try {
+                      Glide.with(context).load(user.getUser_image()).placeholder(R.drawable.profile).into(binding.userImage);
+                  }catch (IllegalArgumentException e){
+                      Log.d("Exception",e.getLocalizedMessage());
+                  }
+
 
 
                 }

@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PassiveIncome"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.activities.ScanBackActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activities.ScnaFrontActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.activities.MyInvitationsActivity"
             android:exported="false"
@@ -28,8 +43,8 @@
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""
-                android:theme="@style/noactiondisplay"/>
+                android:theme="@style/noactiondisplay"
+                android:value="" />
         </activity>
         <activity
             android:name=".ui.activities.AccountSelectionActivity"

@@ -614,9 +614,8 @@ android:textSize="12sp"
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-android:textSize="10sp"
-                    android:text="You get the chance to win lots of prizes\n
-by inviting your friends to use pasiveincome!" />
+                    android:text="Invite your friends and get 15%\nof every member !"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
