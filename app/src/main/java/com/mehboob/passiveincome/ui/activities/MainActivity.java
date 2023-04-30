@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.ActivityMainBinding;
 import com.mehboob.passiveincome.ui.adapters.ViewPagerAdapter;
@@ -19,6 +21,7 @@ private ActivityMainBinding binding;
     private ViewPagerAdapter adapter;
 
     private ArrayList<ViewPagerClass> list;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ private ActivityMainBinding binding;
         setContentView(binding.getRoot());
 
         list = new ArrayList<>();
+
+        mAuth=FirebaseAuth.getInstance();
 
 
         list.add(new ViewPagerClass(R.drawable.slider_img,"Quick and secure", "Deposit and withdraw Payments easily.\n" +
@@ -95,5 +100,18 @@ private ActivityMainBinding binding;
 
     }
 
+    private void updateUI() {
 
+        startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        finish();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            updateUI();
+        }
+    }
 }

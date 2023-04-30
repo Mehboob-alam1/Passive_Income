@@ -17,15 +17,33 @@
         android:theme="@style/Theme.PassiveIncome"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.ChooseAccountActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activities.MyDepositsActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activities.ScanBackActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.activities.ScnaFrontActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

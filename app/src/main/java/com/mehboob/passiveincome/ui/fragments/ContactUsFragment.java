@@ -28,6 +28,7 @@ import com.mehboob.passiveincome.databinding.FragmentAccountBinding;
 import com.mehboob.passiveincome.databinding.FragmentContactUsBinding;
 import com.mehboob.passiveincome.ui.activities.HomeActivity;
 import com.mehboob.passiveincome.ui.activities.LoginActivity;
+import com.mehboob.passiveincome.ui.activities.MyDepositsActivity;
 import com.mehboob.passiveincome.ui.models.User;
 
 
@@ -63,6 +64,10 @@ public class ContactUsFragment extends Fragment {
             fragmentTransaction.replace(R.id.container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+        });
+
+        binding.btnDeposits.setOnClickListener(v -> {
+            startActivity(new Intent(requireContext(), MyDepositsActivity.class));
         });
 
         return binding.getRoot();

@@ -2,4 +2,8 @@
     <string name="app_name">Passive Income</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="balance_enter_text_urdu">یقینی بنائیں کہ آپ نے اصل بیلنس شامل کیا ہے، ورنہ آپ کے جمع کرایا گیا بیلنس تصدیق نہیں ہوگا۔</string>
+    <string name="balance_enter_text_english">۔Make sure to add real balance else your deposit balance will not verified</string>
+    <string name="txt_account_slect_english">Must choose the option that you want to deposit the money in case of wrong selection the balance can be not shown in your profile</string>
+    <string name="txt_Account_slect_urdu">یقینی بنائیں کہ آپ نے پیسے جمع کرانے کی وہ آپشن منتخب کی ہے جس میں آپ کو جمع کرانے ہیں، ورنہ آپ کے پروفائل میں بیلنس نظر نہیں آسکتا</string>
 </resources>
