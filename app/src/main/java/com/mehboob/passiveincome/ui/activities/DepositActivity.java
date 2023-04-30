@@ -60,7 +60,11 @@ public class DepositActivity extends AppCompatActivity {
 
        balance= getIntent().getStringExtra("balance");
        account =getIntent().getStringExtra("account");
+      //  selectedPackage = getIntent().getStringExtra("package");
 
+        binding.btnBack.setOnClickListener(v -> {
+            finish();
+        });
        switch (account){
 
            case "Bank":
@@ -85,15 +89,15 @@ public class DepositActivity extends AppCompatActivity {
         });
 
 
-        selectedPackage = getIntent().getStringExtra("package");
+
 
         fetchAccounts();
-        if (selectedPackage != null) {
-            binding.linePackage.setVisibility(View.VISIBLE);
-            binding.txtSelectedPackage.setText(selectedPackage);
-        } else {
-            binding.linePackage.setVisibility(View.GONE);
-        }
+//        if (selectedPackage != null) {
+//            binding.linePackage.setVisibility(View.VISIBLE);
+//            binding.txtSelectedPackage.setText(selectedPackage);
+//        } else {
+//            binding.linePackage.setVisibility(View.GONE);
+//        }
 
         binding.imgCopyBankNumber.setOnClickListener(v -> {
             copyTextToClipboard(binding.txtBankAccountNumber.getText().toString());

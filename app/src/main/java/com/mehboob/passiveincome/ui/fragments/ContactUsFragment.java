@@ -64,6 +64,7 @@ public class ContactUsFragment extends Fragment {
             fragmentTransaction.replace(R.id.container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            HomeActivity.bottomNavigationView.setSelectedItemId(R.id.nav_profile);
         });
 
         binding.btnDeposits.setOnClickListener(v -> {

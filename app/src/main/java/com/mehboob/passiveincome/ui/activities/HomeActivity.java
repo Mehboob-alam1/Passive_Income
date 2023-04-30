@@ -3,6 +3,9 @@ package com.mehboob.passiveincome.ui.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,7 +23,7 @@ import com.mehboob.passiveincome.ui.fragments.HomeFragment;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ActivityHomeBinding binding;
    private Fragment fragment;
-   private BottomNavigationView bottomNavigationView;
+   public static BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
          bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_UNLABELED);
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
         fragment = new HomeFragment();

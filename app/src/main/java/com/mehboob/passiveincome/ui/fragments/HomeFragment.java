@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,23 +47,44 @@ import java.util.UUID;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
-    private DatabaseReference mRef,packRef;
+    private DatabaseReference mRef, packRef;
     private User user;
     private Context mContext;
     private StorageReference storageReference;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mRef = FirebaseDatabase.getInstance().getReference("Users");
         packRef = FirebaseDatabase.getInstance().getReference("Packages");
-        storageReference= FirebaseStorage.getInstance().getReference("Users");
+        storageReference = FirebaseStorage.getInstance().getReference("Users");
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         loadData();
         fetchBasicPackage();
         fetchStandardPackage();
         fetchPremiumPackage();
+
+        binding.userImage.setOnClickListener(v -> {
+            Fragment fragment = new ContactUsFragment();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+          HomeActivity.bottomNavigationView.setSelectedItemId(R.id.nav_contact_us);
+        });
+
+        binding.cardInvite.setOnClickListener(v -> {
+            Fragment fragment = new AccountFragment();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            HomeActivity.bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+        });
         binding.btnDeposit.setOnClickListener(v -> {
             BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme);
             View bottomsheetView = LayoutInflater.from(requireContext()).
@@ -73,14 +96,14 @@ public class HomeFragment extends Fragment {
             EditText editText = bottomsheetView.findViewById(R.id.etBalanceDeposit);
 
             button.setOnClickListener(v1 -> {
-                if (editText.getText().toString().isEmpty()){
+                if (editText.getText().toString().isEmpty()) {
                     Toast.makeText(mContext, "Enter your deposit balance", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     String balance = editText.getText().toString();
                     Intent intent = new Intent(requireContext(), ChooseAccountActivity.class);
-                            intent.putExtra("balance",balance);
-                            dialog.cancel();
-                            startActivity(intent);
+                    intent.putExtra("balance", balance);
+                    dialog.cancel();
+                    startActivity(intent);
                 }
             });
 
@@ -111,11 +134,11 @@ public class HomeFragment extends Fragment {
         packRef.child("Premium").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
-                    Packages premium=      snapshot.getValue(Packages.class);
-                    binding.txtPremiumProfitPercentage.setText(premium.getProfit() + "% /day" );
-                    binding.txtPremiumRange.setText(premium.getStartRange()+ "~" +premium.getLastRange());
+                    Packages premium = snapshot.getValue(Packages.class);
+                    binding.txtPremiumProfitPercentage.setText(premium.getProfit() + "% /day");
+                    binding.txtPremiumRange.setText(premium.getStartRange() + "~" + premium.getLastRange());
                 }
             }
 
@@ -130,11 +153,11 @@ public class HomeFragment extends Fragment {
         packRef.child("Basic").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
-                    Packages basic=      snapshot.getValue(Packages.class);
-                    binding.txtBasicProfitPercentage.setText(basic.getProfit() + "% /day" );
-                    binding.txtBasicRange.setText(basic.getStartRange()+ "~" +basic.getLastRange());
+                    Packages basic = snapshot.getValue(Packages.class);
+                    binding.txtBasicProfitPercentage.setText(basic.getProfit() + "% /day");
+                    binding.txtBasicRange.setText(basic.getStartRange() + "~" + basic.getLastRange());
                 }
             }
 
@@ -149,11 +172,11 @@ public class HomeFragment extends Fragment {
         packRef.child("Standard").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
-               Packages standard=      snapshot.getValue(Packages.class);
-               binding.txtStandardProfitPercentage.setText(standard.getProfit() + "% /day" );
-               binding.txtStandardRange.setText(standard.getStartRange()+ "~" +standard.getLastRange());
+                    Packages standard = snapshot.getValue(Packages.class);
+                    binding.txtStandardProfitPercentage.setText(standard.getProfit() + "% /day");
+                    binding.txtStandardRange.setText(standard.getStartRange() + "~" + standard.getLastRange());
                 }
             }
 
@@ -171,15 +194,15 @@ public class HomeFragment extends Fragment {
             @SuppressLint("SuspiciousIndentation")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                  user=  snapshot.getValue(User.class);
-                  try {
-                      Glide.with(context).load(user.getUser_image()).placeholder(R.drawable.profile).into(binding.userImage);
-                  }catch (IllegalArgumentException e){
-                      Log.d("Exception",e.getLocalizedMessage());
-                  }
+                if (snapshot.exists()) {
+                    user = snapshot.getValue(User.class);
+                    try {
+                        Glide.with(context).load(user.getUser_image()).placeholder(R.drawable.profile).into(binding.userImage);
+                    } catch (IllegalArgumentException e) {
+                        Log.d("Exception", e.getLocalizedMessage());
+                    }
 
-
+                    binding.txtUserNameHome.setText(user.getFirst_name() + " " + user.getSur_name());
 
                 }
             }
@@ -192,10 +215,29 @@ public class HomeFragment extends Fragment {
     }
 
     private void startPackage(String package_name) {
-        Intent intent = new Intent(getContext(), DepositActivity.class);
-        intent.putExtra("package", package_name);
-        getContext().startActivity(intent);
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.AppBottomSheetDialogTheme);
+        View bottomsheetView = LayoutInflater.from(requireContext()).
+                inflate(R.layout.bottom_sheet_balance, (CardView) getView().findViewById(R.id.cardBalance));
+        dialog.setContentView(bottomsheetView);
+        dialog.show();
+
+        AppCompatButton button = bottomsheetView.findViewById(R.id.btnNextBalance);
+        EditText editText = bottomsheetView.findViewById(R.id.etBalanceDeposit);
+
+        button.setOnClickListener(v1 -> {
+            if (editText.getText().toString().isEmpty()) {
+                Toast.makeText(mContext, "Enter your deposit balance", Toast.LENGTH_SHORT).show();
+            } else {
+                String balance = editText.getText().toString();
+                Intent intent = new Intent(requireContext(), ChooseAccountActivity.class);
+                intent.putExtra("balance", balance);
+                dialog.cancel();
+                startActivity(intent);
+            }
+        });
+
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

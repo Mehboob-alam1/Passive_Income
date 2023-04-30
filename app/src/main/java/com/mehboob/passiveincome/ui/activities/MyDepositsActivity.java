@@ -34,6 +34,10 @@ public class MyDepositsActivity extends AppCompatActivity {
         list = new ArrayList<>();
         depositRef = FirebaseDatabase.getInstance().getReference("Deposit");
         checkForDeposits();
+
+        binding.btnBack.setOnClickListener(v -> {
+            finish();
+        });
     }
 
     private void checkForDeposits() {
@@ -43,6 +47,7 @@ public class MyDepositsActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
+                            list.clear();
                             for (DataSnapshot snap : snapshot.getChildren()) {
 
                                 Deposit deposits = snap.getValue(Deposit.class);
