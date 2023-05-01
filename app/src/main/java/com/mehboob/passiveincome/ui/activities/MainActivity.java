@@ -1,14 +1,21 @@
 package com.mehboob.passiveincome.ui.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.ActivityMainBinding;
 import com.mehboob.passiveincome.ui.adapters.ViewPagerAdapter;
@@ -19,6 +26,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 private ActivityMainBinding binding;
     private ViewPagerAdapter adapter;
+    private DatabaseReference userRef;
 
     private ArrayList<ViewPagerClass> list;
     private FirebaseAuth mAuth;
@@ -30,6 +38,8 @@ private ActivityMainBinding binding;
         setContentView(binding.getRoot());
 
         list = new ArrayList<>();
+
+        userRef= FirebaseDatabase.getInstance().getReference("Users");
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -111,7 +121,37 @@ private ActivityMainBinding binding;
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            updateUI();
+
+            checkIsActive(currentUser);
+
         }
+    }
+
+    private void checkIsActive(FirebaseUser user) {
+        userRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("block").exists()){
+                boolean isBlock= (snapshot.child("block").getValue(boolean.class));
+                  if (isBlock){
+                      binding.btnNext.setClickable(false);
+                      binding.btnStart.setClickable(false);
+                      Toast.makeText(MainActivity.this, "You are blocked contact admin", Toast.LENGTH_SHORT).show();
+                      startActivity(new Intent(MainActivity.this,UserBlockedActivity.class));
+                      finish();
+                  }else{
+                      updateUI();
+                  }
+                }else{
+                    Toast.makeText(MainActivity.this, "Something went wrong try checking your internet", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

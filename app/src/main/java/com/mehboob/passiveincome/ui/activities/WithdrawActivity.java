@@ -10,24 +10,24 @@ import com.mehboob.passiveincome.databinding.ActivityWithdrawBinding;
 import com.mehboob.passiveincome.utils.SharedPref;
 
 public class WithdrawActivity extends AppCompatActivity {
-private ActivityWithdrawBinding binding;
-private SharedPref sharedPref;
+    private ActivityWithdrawBinding binding;
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityWithdrawBinding.inflate(getLayoutInflater());
+        binding = ActivityWithdrawBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-sharedPref= new SharedPref(this);
+        sharedPref = new SharedPref(this);
 
         binding.btnBack.setOnClickListener(v -> {
             onBackPressed();
         });
 
         binding.lineAccount.setOnClickListener(v -> {
-            startActivity(new Intent(this,AccountSelectionActivity.class));
+            startActivity(new Intent(this, AccountSelectionActivity.class));
         });
-binding.txtAccountName.setText(sharedPref.fetchAccount());
+        binding.txtAccountName.setText(sharedPref.fetchAccount());
         binding.btnConfirmWithDraw.setOnClickListener(v -> {
             if (binding.etAmount.getText().toString().isEmpty())
                 Toast.makeText(this, "Enter amount ", Toast.LENGTH_SHORT).show();
@@ -37,9 +37,16 @@ binding.txtAccountName.setText(sharedPref.fetchAccount());
                 Toast.makeText(this, "Enter real name of owner", Toast.LENGTH_SHORT).show();
             else
                 requestWithdraw(binding.etAmount.getText().toString(),
-                         binding.etAccountNumber.getText().toString(),
+                        binding.etAccountNumber.getText().toString(),
                         binding.etOwnerName.getText().toString());
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.txtAccountName.setText(sharedPref.fetchAccount());  
+
     }
 
     private void requestWithdraw(String amount, String accountNumber, String ownerName) {
