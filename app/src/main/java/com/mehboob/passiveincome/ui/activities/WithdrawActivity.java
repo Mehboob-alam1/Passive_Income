@@ -26,10 +26,12 @@ import java.util.UUID;
 public class WithdrawActivity extends AppCompatActivity {
     private ActivityWithdrawBinding binding;
     private SharedPref sharedPref;
-    private DatabaseReference withdrawRef;
+    private DatabaseReference withdrawRef, balanceRef;
     private long currentTimeStamp;
     private String pushId;
     private ProgressDialog dialog;
+    private String totalBalance;
+    private int userCurrentBalance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +43,19 @@ public class WithdrawActivity extends AppCompatActivity {
         dialog.setMessage("Please wait......");
 
         sharedPref = new SharedPref(this);
+userCurrentBalance=Integer.parseInt(getIntent().getStringExtra("totalBalance"));
+
         withdrawRef = FirebaseDatabase.getInstance().getReference("Withdraws");
+        balanceRef = FirebaseDatabase.getInstance().getReference("Balance");
         binding.btnBack.setOnClickListener(v -> {
             onBackPressed();
         });
-
+        checkTotalBalance();
         binding.lineAccount.setOnClickListener(v -> {
             startActivity(new Intent(this, AccountSelectionActivity.class));
         });
+
+        binding.txtCurrentBalance.setText("Available balance " +userCurrentBalance);
         binding.txtAccountName.setText(sharedPref.fetchAccount());
         binding.btnConfirmWithDraw.setOnClickListener(v -> {
             if (binding.etAmount.getText().toString().isEmpty())
@@ -57,6 +64,10 @@ public class WithdrawActivity extends AppCompatActivity {
                 Toast.makeText(this, "Enter account number", Toast.LENGTH_SHORT).show();
             else if (binding.etOwnerName.getText().toString().isEmpty())
                 Toast.makeText(this, "Enter real name of owner", Toast.LENGTH_SHORT).show();
+            else if (Integer.parseInt(binding.etAmount.getText().toString()) > userCurrentBalance)
+                Toast.makeText(this, "Not much balance in wallet", Toast.LENGTH_SHORT).show();
+            else if (Integer.parseInt(binding.etAmount.getText().toString())<200)
+                Toast.makeText(this, "Minimum withdraw balance is 200", Toast.LENGTH_SHORT).show();
             else {
                 currentTimeStamp = System.currentTimeMillis();
                 pushId = UUID.randomUUID().toString();
@@ -117,8 +128,16 @@ public class WithdrawActivity extends AppCompatActivity {
                     if (task.isComplete() && task.isSuccessful()) {
                         dialog.dismiss();
                         Toast.makeText(this, "Withdraw request send to admin", Toast.LENGTH_SHORT).show();
-                        finish();
 
+
+                        int totalBalanceUser = Integer.parseInt(totalBalance);
+                        int withdrawBalance = Integer.parseInt(withDrawAmount);
+
+                        int remainingBalance = totalBalanceUser - withdrawBalance;
+                        balanceRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child("totalBalance")
+                                .setValue(String.valueOf(remainingBalance));
+                        finish();
                     } else {
                         dialog.dismiss();
                         Toast.makeText(this, "Something went wrong ", Toast.LENGTH_SHORT).show();
@@ -128,4 +147,31 @@ public class WithdrawActivity extends AppCompatActivity {
                     Toast.makeText(this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
+    private void checkTotalBalance() {
+
+        balanceRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("totalBalance")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+
+                             totalBalance = snapshot.getValue(String.class);
+
+
+
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
 }

@@ -118,7 +118,10 @@ public class HomeFragment extends Fragment {
         });
 
         binding.btnWithdraw.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), WithdrawActivity.class));
+            Intent intent = new Intent(getContext(),WithdrawActivity.class);
+            intent.putExtra("totalBalance",userTotalBalance);
+            requireContext().startActivity(intent);
+
         });
 
 
