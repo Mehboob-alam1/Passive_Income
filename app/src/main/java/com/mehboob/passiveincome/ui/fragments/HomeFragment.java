@@ -3,6 +3,7 @@ package com.mehboob.passiveincome.ui.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,12 +36,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.FragmentHomeBinding;
+import com.mehboob.passiveincome.ui.activities.AboutUsActivity;
 import com.mehboob.passiveincome.ui.activities.ChooseAccountActivity;
 import com.mehboob.passiveincome.ui.activities.DepositActivity;
 import com.mehboob.passiveincome.ui.activities.HomeActivity;
+import com.mehboob.passiveincome.ui.activities.PaymentRulesActivity;
 import com.mehboob.passiveincome.ui.activities.WithdrawActivity;
 import com.mehboob.passiveincome.ui.models.Packages;
 import com.mehboob.passiveincome.ui.models.User;
+import com.mehboob.passiveincome.utils.Constant;
 
 import java.util.UUID;
 
@@ -129,8 +133,33 @@ public class HomeFragment extends Fragment {
             startPackage("Premium");
         });
 
+        binding.btnPaymentRules.setOnClickListener(v -> {
+            startActivity(new Intent(requireContext(), PaymentRulesActivity.class));
+        });
+        binding.btnAboutUs.setOnClickListener(v -> {
+            startActivity(new Intent(requireContext(), AboutUsActivity.class));
+        });
 
+
+        binding.btnWhatsapp.setOnClickListener(v -> {
+           openWhatsApp();
+        });
         return binding.getRoot();
+    }
+
+    private void openWhatsApp() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://api.whatsapp.com/send?phone=" + Constant.PHONE_NUMBER_ADMIN + "&text=" + Uri.encode(Constant.DEFAULT_MESSAGE)));
+
+// Verify that WhatsApp is installed on the device
+        PackageManager packageManager = requireContext().getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            // WhatsApp is installed, start the activity
+            startActivity(intent);
+        } else {
+            // WhatsApp is not installed, display an error message or redirect to the Play Store
+            Toast.makeText(requireContext(), "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void fetchUserBalance() {

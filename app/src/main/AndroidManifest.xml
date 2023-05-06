@@ -17,6 +17,22 @@
         android:theme="@style/Theme.PassiveIncome"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.AboutUsActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activities.PaymentRulesActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activities.MyWithdrawActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">

@@ -3,6 +3,9 @@ package com.mehboob.passiveincome.ui.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mehboob.passiveincome.databinding.ActivityMyWithdrawBinding;
 import com.mehboob.passiveincome.ui.models.Withdraw;
+import com.mehboob.passiveincome.utils.Constant;
 
 public class MyWithdrawActivity extends AppCompatActivity {
     private ActivityMyWithdrawBinding binding;
@@ -31,9 +35,29 @@ public class MyWithdrawActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(v -> {
             finish();
         });
+
+        binding.btnWhatsapp.setOnClickListener(v -> {
+            openWhatsApp();
+
+        });
         fetchDetails();
 
 
+    }
+
+    private void openWhatsApp() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://api.whatsapp.com/send?phone=" + Constant.PHONE_NUMBER_ADMIN + "&text=" + Uri.encode(Constant.DEFAULT_MESSAGE)));
+
+// Verify that WhatsApp is installed on the device
+        PackageManager packageManager = getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            // WhatsApp is installed, start the activity
+            startActivity(intent);
+        } else {
+            // WhatsApp is not installed, display an error message or redirect to the Play Store
+            Toast.makeText(this, "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void fetchDetails() {
