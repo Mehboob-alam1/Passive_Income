@@ -47,10 +47,11 @@ import java.util.UUID;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
-    private DatabaseReference mRef, packRef;
+    private DatabaseReference mRef, packRef, userBalanceRef;
     private User user;
     private Context mContext;
     private StorageReference storageReference;
+    private String userTotalBalance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,12 +60,14 @@ public class HomeFragment extends Fragment {
         mRef = FirebaseDatabase.getInstance().getReference("Users");
         packRef = FirebaseDatabase.getInstance().getReference("Packages");
         storageReference = FirebaseStorage.getInstance().getReference("Users");
+        userBalanceRef = FirebaseDatabase.getInstance().getReference("Balance");
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         loadData();
         fetchBasicPackage();
         fetchStandardPackage();
         fetchPremiumPackage();
+        fetchUserBalance();
 
         binding.userImage.setOnClickListener(v -> {
             Fragment fragment = new ContactUsFragment();
@@ -73,7 +76,7 @@ public class HomeFragment extends Fragment {
             fragmentTransaction.replace(R.id.container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-          HomeActivity.bottomNavigationView.setSelectedItemId(R.id.nav_contact_us);
+            HomeActivity.bottomNavigationView.setSelectedItemId(R.id.nav_contact_us);
         });
 
         binding.cardInvite.setOnClickListener(v -> {
@@ -128,6 +131,27 @@ public class HomeFragment extends Fragment {
 
 
         return binding.getRoot();
+    }
+
+    private void fetchUserBalance() {
+        userBalanceRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("totalBalance")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            userTotalBalance = snapshot.getValue(String.class);
+
+                            binding.txtUserBalance.setText(userTotalBalance);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
     private void fetchPremiumPackage() {

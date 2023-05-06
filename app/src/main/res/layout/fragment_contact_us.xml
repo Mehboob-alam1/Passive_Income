@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_contact_us"
     android:background="@color/edittext_bg"
-    tools:context=".ui.activities.InviteFriendActivity" >
+    tools:context=".ui.fragments.ContactUsFragment" >
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -181,7 +181,32 @@ android:id="@+id/profileImage"
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/btnWithdrawRequest"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_icons"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Withdraw request"
+                android:layout_weight="3"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                android:src="@drawable/ic_forward"/>
+
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
