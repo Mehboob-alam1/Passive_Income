@@ -18,13 +18,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.ActivityLoginBinding;
+import com.mehboob.passiveincome.utils.SharedPref;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
     private static final String TAG="LoginActivity";
+    private boolean isProfileCompleted;
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth=FirebaseAuth.getInstance();
-
+        sharedPref = new SharedPref(this);
+userRef= FirebaseDatabase.getInstance().getReference("Users");
         binding.txtSignup.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class));
         });
@@ -109,7 +119,33 @@ binding.progressSignIn.setVisibility(View.VISIBLE);
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
+
            updateUI();
+
+            //checkIfProfileCompleted(currentUser.getUid());
         }
+    }
+
+    private void checkIfProfileCompleted(String userId) {
+        userRef.child(userId)
+                .child("complete")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                         isProfileCompleted=   snapshot.getValue(boolean.class);
+                         if (isProfileCompleted)
+                             updateUI();
+
+                        }else{
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }

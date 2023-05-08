@@ -106,4 +106,9 @@ public class ScnaFrontActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Complete the profile", Toast.LENGTH_SHORT).show();
+    }
 }

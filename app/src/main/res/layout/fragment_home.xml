@@ -111,16 +111,31 @@ android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:layout_height="wrap_content" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="0 PKR"
-                android:id="@+id/txtUserBalance"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+        android:text="0"
+        android:id="@+id/txtUserBalance"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:text="PKR"
+        android:textSize="10sp"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+</LinearLayout>
+
 
             <ImageView
                 android:layout_width="30dp"

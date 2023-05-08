@@ -1,5 +1,6 @@
 package com.mehboob.passiveincome.ui.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,6 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mehboob.passiveincome.databinding.ActivityInviteFriendBinding;
 import com.mehboob.passiveincome.databinding.ActivityScanBackBinding;
+import com.mehboob.passiveincome.utils.SharedPref;
 
 import java.io.ByteArrayOutputStream;
 
@@ -33,12 +37,14 @@ public class ScanBackActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private String downloadUrl;
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityScanBackBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        sharedPref= new SharedPref(this);
         storageReference = FirebaseStorage.getInstance().getReference("Users");
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         binding.nextStepbtn1.setOnClickListener(v -> {
@@ -60,9 +66,19 @@ public class ScanBackActivity extends AppCompatActivity {
                         databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .child("cnic_back").setValue(downloadUrl).addOnCompleteListener(task1 -> {
                                     if (task1.isComplete() && task1.isSuccessful()) {
-                                        Intent intent = new Intent(ScanBackActivity.this, HomeActivity.class);
+                                        databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .child("complete").setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isComplete() && task.isSuccessful()){
+                                                            sharedPref.saveIsComplete(true);
+                                                            Intent intent = new Intent(ScanBackActivity.this, HomeActivity.class);
 
-                                        startActivity(intent);
+                                                            startActivity(intent);
+                                                        }
+                                                    }
+                                                });
+
                                     } else {
                                         Toast.makeText(ScanBackActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                     }
@@ -105,5 +121,9 @@ public class ScanBackActivity extends AppCompatActivity {
 
 
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Complete the profile", Toast.LENGTH_SHORT).show();
     }
 }

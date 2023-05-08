@@ -112,7 +112,7 @@ private ActivityMainBinding binding;
 
     private void updateUI() {
 
-        startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
         finish();
     }
     @Override

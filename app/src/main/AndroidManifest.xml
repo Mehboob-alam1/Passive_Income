@@ -17,6 +17,30 @@
         android:theme="@style/Theme.PassiveIncome"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.ViewReferralActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activities.InvitedActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activities.CheckReferralActivity"
+            android:exported="false"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activities.AboutUsActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">
@@ -97,14 +121,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activities.InviteFriendActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:theme="@style/noactiondisplay"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ui.activities.AccountSelectionActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">
@@ -174,6 +190,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

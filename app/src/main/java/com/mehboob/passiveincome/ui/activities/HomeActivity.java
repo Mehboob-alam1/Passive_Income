@@ -70,4 +70,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return this;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
 }

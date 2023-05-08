@@ -138,7 +138,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
 
-
+android:visibility="gone"
                 android:layout_margin="5dp"
                 android:background="@drawable/bg_start"
                 android:drawableStart="@drawable/ic_baseline_verified_24"

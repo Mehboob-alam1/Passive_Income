@@ -3,10 +3,12 @@ package com.mehboob.passiveincome.ui.fragments;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +16,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -55,7 +59,9 @@ public class ContactUsFragment extends Fragment {
         });
 
         binding.btnLogout.setOnClickListener(v -> {
-            signOut();
+
+
+            showAlertDialog();
 
         });
         binding.txtInviteFriend.setOnClickListener(v -> {
@@ -129,5 +135,27 @@ public class ContactUsFragment extends Fragment {
 
         // Show a toast message to indicate that the text has been copied
         Toast.makeText(getContext(), "Text copied to clipboard " + text, Toast.LENGTH_SHORT).show();
+    }
+    private void showAlertDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(requireContext());
+        final View customLayout = getLayoutInflater().inflate(R.layout.item_exit, null);
+        alertDialog.setView(customLayout);
+
+        TextView btnYes = customLayout.findViewById(R.id.btnYes);
+        TextView  btnNo = customLayout.findViewById(R.id.btnNo);
+
+        AlertDialog alert = alertDialog.create();
+        alert.setCanceledOnTouchOutside(false);
+        alert.show();
+
+        btnYes.setOnClickListener(v -> {
+
+signOut();
+        });
+
+        btnNo.setOnClickListener(v -> {
+            alert.dismiss();
+        });
+
     }
 }

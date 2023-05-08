@@ -64,7 +64,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="Position your document inside the frame. Make sure that all the data is clearly visible."
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
     </LinearLayout>

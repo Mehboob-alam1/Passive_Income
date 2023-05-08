@@ -19,14 +19,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mehboob.passiveincome.R;
 import com.mehboob.passiveincome.databinding.ActivityCreateAccountBinding;
 import com.mehboob.passiveincome.ui.models.User;
+import com.mehboob.passiveincome.utils.SharedPref;
 
 import java.util.UUID;
 
@@ -40,12 +44,14 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Uri uri;
     private StorageReference storageReference;
     private String userReferralCode;
+    private boolean isProfileCompleted;
+    private SharedPref sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+sharedPref= new SharedPref(this);
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference("Users");
         storageReference= FirebaseStorage.getInstance().getReference("Users");
@@ -71,7 +77,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 Toast.makeText(this, "Address required", Toast.LENGTH_SHORT).show();
             else if (uri==null)
                 Toast.makeText(this, "Add your original picture", Toast.LENGTH_SHORT).show();
-            else
+            else if (FirebaseAuth.getInstance().getCurrentUser()==null)
                 createAccount(binding.etEmail.getText().toString(),
                         binding.etPassword.getText().toString(),
                         binding.etFirstName.getText().toString(),
@@ -79,6 +85,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                         binding.etPhoneNumber.getText().toString(),
                         binding.etReferralId.getText().toString(),
                         binding.etAddress.getText().toString());
+            else
+                uploadImage(uri,new User(binding.etEmail.getText().toString(),
+                        binding.etPassword.getText().toString(),
+                        binding.etFirstName.getText().toString(),
+                        binding.etSurname.getText().toString(),
+                        binding.etPhoneNumber.getText().toString(),
+                        binding.etReferralId.getText().toString(),
+                        binding.etAddress.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(),"","","",false,false));
+
         });
         binding.txtSingIn.setOnClickListener(v -> {
             finish();
@@ -125,7 +140,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         binding.textCreate.setVisibility(View.VISIBLE);
                         binding.progressSignUp.setVisibility(View.GONE);
 
-                        uploadImage(uri,new User(email, password, first_name, sur_name, phone_number, userReferralCode, address, userId,"","","",false));
+                        uploadImage(uri,new User(email, password, first_name, sur_name, phone_number, userReferralCode, address, userId,"","","",false,false));
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -144,6 +159,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         mRef.child(userId).setValue(user).addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()) {
+                sharedPref.saveIsUser(true);
                 updateUI();
                 Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
             } else {
@@ -153,7 +169,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        startActivity(new Intent(CreateAccountActivity.this, ScnaFrontActivity.class));
+        startActivity(new Intent(CreateAccountActivity.this, CheckReferralActivity.class));
         finish();
     }
 
@@ -175,27 +191,45 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         // Upload image to Firebase Storage
         UploadTask uploadTask = imageReference.putFile(imageUri);
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // Get the download URL of the image from Firebase Storage
-                imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri downloadUrl) {
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            // Get the download URL of the image from Firebase Storage
+            imageReference.getDownloadUrl().addOnSuccessListener(downloadUrl -> {
 
-                      uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"","",false));
+              uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"","",false,false));
 
-                        Toast.makeText(getApplicationContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                // Display an error message to the user
+                Toast.makeText(getApplicationContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+            });
+        }).addOnFailureListener(e -> {
+            // Display an error message to the user
 
-                Toast.makeText(getApplicationContext(), "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getApplicationContext(), "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
+    }
+
+
+
+    private void checkIfProfileCompleted(String userId) {
+
+        mRef.child(userId)
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()){
+                             User user =snapshot.getValue(User.class);
+                             if (user.getCnic_front().isEmpty()){
+                                 Toast.makeText(CreateAccountActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
+                                 startActivity(new Intent(CreateAccountActivity.this,ScnaFrontActivity.class));
+                             }else {
+
+                             }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
     }
 }

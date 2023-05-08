@@ -43,7 +43,7 @@ public class WithdrawActivity extends AppCompatActivity {
         dialog.setMessage("Please wait......");
 
         sharedPref = new SharedPref(this);
-userCurrentBalance=Integer.parseInt(getIntent().getStringExtra("totalBalance"));
+
 
         withdrawRef = FirebaseDatabase.getInstance().getReference("Withdraws");
         balanceRef = FirebaseDatabase.getInstance().getReference("Balance");
@@ -54,8 +54,10 @@ userCurrentBalance=Integer.parseInt(getIntent().getStringExtra("totalBalance"));
         binding.lineAccount.setOnClickListener(v -> {
             startActivity(new Intent(this, AccountSelectionActivity.class));
         });
-
-        binding.txtCurrentBalance.setText("Available balance " +userCurrentBalance);
+        if (getIntent().getStringExtra("totalBalance")!=null) {
+            userCurrentBalance = Integer.parseInt(getIntent().getStringExtra("totalBalance"));
+            binding.txtCurrentBalance.setText("Available balance " + userCurrentBalance);
+        }
         binding.txtAccountName.setText(sharedPref.fetchAccount());
         binding.btnConfirmWithDraw.setOnClickListener(v -> {
             if (binding.etAmount.getText().toString().isEmpty())
@@ -85,7 +87,7 @@ userCurrentBalance=Integer.parseInt(getIntent().getStringExtra("totalBalance"));
                                 requestWithdraw(FirebaseAuth.getInstance().getCurrentUser().getUid(), pushId,
                                         false, binding.etAmount.getText().toString(), binding.etAccountNumber.getText().toString(), binding.etOwnerName.getText().toString(), String.valueOf(currentTimeStamp));
                             } else {
-                                Toast.makeText(WithdrawActivity.this, "You can deposit only once in 24 hours", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(WithdrawActivity.this, "You can withdraw only once in 24 hours", Toast.LENGTH_SHORT).show();
                             }
 
 //                        else {
