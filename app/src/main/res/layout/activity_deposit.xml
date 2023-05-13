@@ -91,11 +91,16 @@
 
                 android:textAllCaps="true"
                 android:textColor="@color/white" />
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="IBAN"
+    android:textColor="@color/white"
+    android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_icons"
                 android:orientation="horizontal"
 
@@ -118,7 +123,12 @@
                     android:src="@drawable/ic_copy" />
 
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Owner name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,6 +154,12 @@
                     android:src="@drawable/ic_copy" />
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bank name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Account name"
+                    android:text="Bank name"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -190,9 +206,15 @@
 
                 android:textColor="@color/white"
                 android:textAlignment="center"/>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Easypaisa account number "
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
@@ -216,6 +238,12 @@
                     android:src="@drawable/ic_copy"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Easypaisa account name "
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
@@ -265,9 +293,15 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textAlignment="center"/>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jazzcash account number "
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
@@ -291,7 +325,12 @@
                     android:src="@drawable/ic_copy"/>
 
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jazzcash account name "
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"/>
             <LinearLayout
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
