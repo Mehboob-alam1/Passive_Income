@@ -8,11 +8,14 @@ public class Withdraw {
     private String withDrawAccountNumber;
     private String WithDrawAccountName;
     private String timeStamp;
+    private String accountWithDraw;
+
 
     public Withdraw() {
     }
 
-    public Withdraw(String userId, String pushId, boolean isVerified, String withDrawAmount, String withDrawAccountNumber, String withDrawAccountName, String timeStamp) {
+
+    public Withdraw(String userId, String pushId, boolean isVerified, String withDrawAmount, String withDrawAccountNumber, String withDrawAccountName, String timeStamp, String accountWithDraw) {
         this.userId = userId;
         this.pushId = pushId;
         this.isVerified = isVerified;
@@ -20,6 +23,15 @@ public class Withdraw {
         this.withDrawAccountNumber = withDrawAccountNumber;
         WithDrawAccountName = withDrawAccountName;
         this.timeStamp = timeStamp;
+        this.accountWithDraw = accountWithDraw;
+    }
+
+    public String getAccountWithDraw() {
+        return accountWithDraw;
+    }
+
+    public void setAccountWithDraw(String accountWithDraw) {
+        this.accountWithDraw = accountWithDraw;
     }
 
     public String getTimeStamp() {

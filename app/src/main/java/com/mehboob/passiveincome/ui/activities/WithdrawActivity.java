@@ -121,7 +121,7 @@ public class WithdrawActivity extends AppCompatActivity {
 
     private void requestWithdraw(String userId, String pushId, boolean isVerified, String withDrawAmount, String withDrawAccountNumber, String withDrawAccountName, String timeStamp) {
 
-        Withdraw withdraw = new Withdraw(userId, pushId, isVerified, withDrawAmount, withDrawAccountNumber, withDrawAccountName, timeStamp);
+        Withdraw withdraw = new Withdraw(userId, pushId, isVerified, withDrawAmount, withDrawAccountNumber, withDrawAccountName, timeStamp,binding.txtAccountName.getText().toString());
 
         withdrawRef.child(userId)
 

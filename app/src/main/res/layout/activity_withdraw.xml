@@ -141,7 +141,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Real number of account number"
+                    android:text="Real name of account holder"
                     android:textColor="@color/white"/>
                 <EditText
                     android:layout_width="match_parent"
