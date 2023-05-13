@@ -107,6 +107,9 @@ public class DepositActivity extends AppCompatActivity {
 
         });
 
+        binding.copyBankName.setOnClickListener(v -> {
+            copyTextToClipboard(binding.txtBankName.getText().toString());
+        });
         binding.imgCopyEasypaisaNumber.setOnClickListener(v -> {
             copyTextToClipboard(binding.txtEasyPaisaAccountNumber.getText().toString());
         });
@@ -176,6 +179,7 @@ public class DepositActivity extends AppCompatActivity {
                     binding.txtJazzCashAccountNumber.setText(accounts.getJazzAccountNumber());
                     binding.txtEasyPaisaAccountName.setText(accounts.getEasyAccountName());
                     binding.txtEasyPaisaAccountNumber.setText(accounts.getEasyAccountNumber());
+                    binding.txtBankName.setText(accounts.getBankName());
                 }
             }
 

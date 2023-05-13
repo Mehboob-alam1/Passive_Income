@@ -7,20 +7,30 @@ public class Accounts {
     private String jazzAccountName;
     private String easyAccountNumber;
     private String easyAccountName;
+    private String bankName;
+
 
 
     public Accounts() {
     }
 
-    public Accounts(String bankAccountNumber, String bankAccountName, String jazzAccountNumber, String jazzAccountName, String easyAccountNumber, String easyAccountName) {
+    public Accounts(String bankAccountNumber, String bankAccountName, String jazzAccountNumber, String jazzAccountName, String easyAccountNumber, String easyAccountName, String bankName) {
         this.bankAccountNumber = bankAccountNumber;
         this.bankAccountName = bankAccountName;
         this.jazzAccountNumber = jazzAccountNumber;
         this.jazzAccountName = jazzAccountName;
         this.easyAccountNumber = easyAccountNumber;
         this.easyAccountName = easyAccountName;
+        this.bankName = bankName;
     }
 
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
 
     public String getBankAccountNumber() {
         return bankAccountNumber;
