@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -24,6 +26,22 @@ import com.mehboob.passiveincome.ui.models.ViewPagerClass;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+    String prevStarted = "yes";
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+        if (!sharedpreferences.getBoolean(prevStarted, false)) {
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean(prevStarted, Boolean.TRUE);
+            editor.apply();
+        } else {
+            moveToSecondary();
+        }
+    }
 private ActivityMainBinding binding;
     private ViewPagerAdapter adapter;
     private DatabaseReference userRef;
@@ -102,7 +120,11 @@ private ActivityMainBinding binding;
 
 
     }
-
+    public void moveToSecondary(){
+        // use an intent to travel from one activity to another.
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+    }
     private void controlButtons() {
 
         binding.btnNext.setVisibility(View.VISIBLE);
