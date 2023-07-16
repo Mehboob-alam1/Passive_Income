@@ -138,7 +138,7 @@ private ActivityCheckReferralBinding binding;
 
 
     private void updateUI() {
-        startActivity(new Intent(CheckReferralActivity.this, ScnaFrontActivity.class));
+        startActivity(new Intent(CheckReferralActivity.this, HomeActivity.class));
         finish();
     }
 
@@ -161,7 +161,7 @@ private ActivityCheckReferralBinding binding;
                             User user =snapshot.getValue(User.class);
                             if (user.getCnic_front().isEmpty()){
                                 Toast.makeText(CheckReferralActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(CheckReferralActivity.this,ScnaFrontActivity.class));
+                                startActivity(new Intent(CheckReferralActivity.this,HomeActivity.class));
                                 finishAffinity();
                             }else {
 

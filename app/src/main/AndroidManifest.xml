@@ -97,22 +97,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activities.ScanBackActivity"
-            android:exported="false"
-            android:theme="@style/noactiondisplay">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.activities.ScnaFrontActivity"
-            android:exported="false"
-            android:theme="@style/noactiondisplay">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ui.activities.MyInvitationsActivity"
             android:exported="false"
             android:theme="@style/noactiondisplay">

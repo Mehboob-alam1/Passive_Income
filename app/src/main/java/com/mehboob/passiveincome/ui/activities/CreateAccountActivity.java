@@ -85,14 +85,10 @@ sharedPref= new SharedPref(this);
                         binding.etPhoneNumber.getText().toString(),
                         binding.etReferralId.getText().toString(),
                         binding.etAddress.getText().toString());
-            else
-                uploadImage(uri,new User(binding.etEmail.getText().toString(),
-                        binding.etPassword.getText().toString(),
-                        binding.etFirstName.getText().toString(),
-                        binding.etSurname.getText().toString(),
-                        binding.etPhoneNumber.getText().toString(),
-                        binding.etReferralId.getText().toString(),
-                        binding.etAddress.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(),"","","",false,false));
+            else if (FirebaseAuth.getInstance().getCurrentUser() !=null && binding.textCreate.getText().toString().equals("Authenticated ! Save the data")){
+                uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false));
+            }else
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
         });
         binding.txtSingIn.setOnClickListener(v -> {
@@ -139,8 +135,8 @@ sharedPref= new SharedPref(this);
                         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         binding.textCreate.setVisibility(View.VISIBLE);
                         binding.progressSignUp.setVisibility(View.GONE);
+         binding.textCreate.setText("Authenticated ! Save the data");
 
-                        uploadImage(uri,new User(email, password, first_name, sur_name, phone_number, userReferralCode, address, userId,"","","",false,false));
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -159,10 +155,14 @@ sharedPref= new SharedPref(this);
 
         mRef.child(userId).setValue(user).addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()) {
+                binding.textCreate.setVisibility(View.VISIBLE);
+                binding.progressSignUp.setVisibility(View.GONE);
                 sharedPref.saveIsUser(true);
                 updateUI();
                 Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
             } else {
+                binding.textCreate.setVisibility(View.VISIBLE);
+                binding.progressSignUp.setVisibility(View.GONE);
                 Toast.makeText(CreateAccountActivity.this, "Something went wrong! Try again", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e -> Toast.makeText(CreateAccountActivity.this, "Error adding data : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
@@ -188,7 +188,8 @@ sharedPref= new SharedPref(this);
         String imageName = UUID.randomUUID().toString() + ".jpg";
         StorageReference imageReference=        storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Image");
 
-
+        binding.textCreate.setVisibility(View.GONE);
+        binding.progressSignUp.setVisibility(View.VISIBLE);
         // Upload image to Firebase Storage
         UploadTask uploadTask = imageReference.putFile(imageUri);
         uploadTask.addOnSuccessListener(taskSnapshot -> {
@@ -201,7 +202,8 @@ sharedPref= new SharedPref(this);
             });
         }).addOnFailureListener(e -> {
             // Display an error message to the user
-
+            binding.textCreate.setVisibility(View.VISIBLE);
+            binding.progressSignUp.setVisibility(View.GONE);
             Toast.makeText(getApplicationContext(), "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
@@ -218,7 +220,7 @@ sharedPref= new SharedPref(this);
                              User user =snapshot.getValue(User.class);
                              if (user.getCnic_front().isEmpty()){
                                  Toast.makeText(CreateAccountActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
-                                 startActivity(new Intent(CreateAccountActivity.this,ScnaFrontActivity.class));
+                                 startActivity(new Intent(CreateAccountActivity.this,HomeActivity.class));
                              }else {
 
                              }
