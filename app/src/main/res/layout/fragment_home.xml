@@ -81,7 +81,7 @@
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/imageSliderMain"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="160dp"
             app:dotsCornerRadius="8dp"
             app:dotsSize="6dp"
             app:dotsSpacing="1dp"

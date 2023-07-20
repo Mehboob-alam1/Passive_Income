@@ -75,9 +75,9 @@ sharedPref= new SharedPref(this);
                 Toast.makeText(this, "Phone number required", Toast.LENGTH_SHORT).show();
             else if (binding.etAddress.getText().toString().isEmpty())
                 Toast.makeText(this, "Address required", Toast.LENGTH_SHORT).show();
-            else if (uri==null)
+            else if (uri == null)
                 Toast.makeText(this, "Add your original picture", Toast.LENGTH_SHORT).show();
-            else if (FirebaseAuth.getInstance().getCurrentUser()==null)
+            else if (FirebaseAuth.getInstance().getCurrentUser() == null)
                 createAccount(binding.etEmail.getText().toString(),
                         binding.etPassword.getText().toString(),
                         binding.etFirstName.getText().toString(),
@@ -85,9 +85,8 @@ sharedPref= new SharedPref(this);
                         binding.etPhoneNumber.getText().toString(),
                         binding.etReferralId.getText().toString(),
                         binding.etAddress.getText().toString());
-            else if (FirebaseAuth.getInstance().getCurrentUser() !=null && binding.textCreate.getText().toString().equals("Authenticated ! Save the data")){
-                uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false));
-            }else
+
+            else
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
         });
@@ -133,10 +132,10 @@ sharedPref= new SharedPref(this);
                         Log.d(TAG, "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        binding.textCreate.setVisibility(View.VISIBLE);
-                        binding.progressSignUp.setVisibility(View.GONE);
-         binding.textCreate.setText("Authenticated ! Save the data");
-
+//                        binding.textCreate.setVisibility(View.VISIBLE);
+//                        binding.progressSignUp.setVisibility(View.GONE);
+//         binding.textCreate.setText("Authenticated ! Save the data");
+                        uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false));
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
