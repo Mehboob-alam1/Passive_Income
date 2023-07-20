@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -42,10 +43,16 @@ import com.mehboob.passiveincome.ui.activities.DepositActivity;
 import com.mehboob.passiveincome.ui.activities.HomeActivity;
 import com.mehboob.passiveincome.ui.activities.PaymentRulesActivity;
 import com.mehboob.passiveincome.ui.activities.WithdrawActivity;
+import com.mehboob.passiveincome.ui.adapters.SliderAdapter;
 import com.mehboob.passiveincome.ui.models.Packages;
+import com.mehboob.passiveincome.ui.models.Slider;
 import com.mehboob.passiveincome.ui.models.User;
 import com.mehboob.passiveincome.utils.Constant;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 
@@ -56,6 +63,10 @@ public class HomeFragment extends Fragment {
     private Context mContext;
     private StorageReference storageReference;
     private String userTotalBalance;
+    SliderView sliderView;
+    ArrayList<Slider> list;
+    SliderAdapter adapter;
+    DatabaseReference databaseReference,imageRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,13 +75,14 @@ public class HomeFragment extends Fragment {
         mRef = FirebaseDatabase.getInstance().getReference("Users");
         packRef = FirebaseDatabase.getInstance().getReference("Packages");
         storageReference = FirebaseStorage.getInstance().getReference("Users");
+
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        list= new ArrayList<>();
         userBalanceRef = FirebaseDatabase.getInstance().getReference("Balance");
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         loadData();
-        fetchBasicPackage();
-        fetchStandardPackage();
-        fetchPremiumPackage();
+        fetchBanners();
         fetchUserBalance();
 
         binding.userImage.setOnClickListener(v -> {
@@ -125,16 +137,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-        binding.btnBasicPackage.setOnClickListener(v -> {
-            startPackage("Basic");
-        });
-        binding.btnStandardPackage.setOnClickListener(v -> {
-            startPackage("Standard");
-        });
 
-        binding.btnPremiumPackage.setOnClickListener(v -> {
-            startPackage("Premium");
-        });
 
         binding.btnPaymentRules.setOnClickListener(v -> {
             startActivity(new Intent(requireContext(), PaymentRulesActivity.class));
@@ -164,7 +167,45 @@ public class HomeFragment extends Fragment {
             Toast.makeText(requireContext(), "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
         }
     }
+    private void setSlider() {
+       binding.imageSliderMain.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        binding.imageSliderMain.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        binding.imageSliderMain.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        binding.imageSliderMain.setIndicatorSelectedColor(Color.WHITE);
+        binding.imageSliderMain.setIndicatorUnselectedColor(Color.GRAY);
+        binding.imageSliderMain.setScrollTimeInSec(4); //set scroll delay in seconds :
+        binding.imageSliderMain.startAutoCycle();
 
+    }
+
+    private void fetchBanners() {
+
+        databaseReference.child("Banners").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    list.clear();
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        String imageUrl = snapshot1.child("imageUrl").getValue(String.class);
+                        String imageLink = snapshot1.child("imageLink").getValue(String.class);
+                        String pushId = snapshot1.child("pushId").getValue(String.class);
+
+//                        Toast.makeText(StartScreen.this, ""+data, Toast.LENGTH_SHORT).show();
+                        list.add(new Slider(imageLink, imageUrl, pushId));
+                    }
+                    adapter = new SliderAdapter(list,getActivity().getApplicationContext());
+                    binding.imageSliderMain.setSliderAdapter(adapter);
+                    setSlider();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
     private void fetchUserBalance() {
         userBalanceRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("totalBalance")
@@ -186,62 +227,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void fetchPremiumPackage() {
-        packRef.child("Premium").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
 
-                    Packages premium = snapshot.getValue(Packages.class);
-                    binding.txtPremiumProfitPercentage.setText(premium.getProfit() + "% /day");
-                    binding.txtPremiumRange.setText(premium.getStartRange() + "~" + premium.getLastRange());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void fetchStandardPackage() {
-        packRef.child("Basic").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-
-                    Packages basic = snapshot.getValue(Packages.class);
-                    binding.txtBasicProfitPercentage.setText(basic.getProfit() + "% /day");
-                    binding.txtBasicRange.setText(basic.getStartRange() + "~" + basic.getLastRange());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void fetchBasicPackage() {
-        packRef.child("Standard").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-
-                    Packages standard = snapshot.getValue(Packages.class);
-                    binding.txtStandardProfitPercentage.setText(standard.getProfit() + "% /day");
-                    binding.txtStandardRange.setText(standard.getStartRange() + "~" + standard.getLastRange());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
     private void loadData() {
         Context context = ((HomeActivity) getActivity()).getContext();

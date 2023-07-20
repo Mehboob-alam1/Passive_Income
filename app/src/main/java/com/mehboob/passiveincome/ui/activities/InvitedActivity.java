@@ -23,13 +23,14 @@ public class InvitedActivity extends AppCompatActivity {
     private ActivityInvitedBinding binding;
     private DatabaseReference databaseReference;
     private ArrayList<String> list;
-private ReferralAdapter adapter;
+    private ReferralAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityInvitedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        list= new ArrayList<>();
+        list = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("Referrals");
 
         fetchReferrals();
@@ -50,10 +51,10 @@ private ReferralAdapter adapter;
                                 list.add(referrals.getUserId());
 
                             }
-                            adapter= new ReferralAdapter(InvitedActivity.this,list);
+                            adapter = new ReferralAdapter(InvitedActivity.this, list);
                             binding.ecyclerRefferal.setLayoutManager(new LinearLayoutManager(InvitedActivity.this));
                             binding.ecyclerRefferal.setAdapter(adapter);
-                        }else{
+                        } else {
                             Toast.makeText(InvitedActivity.this, "No referral exists", Toast.LENGTH_SHORT).show();
                         }
                     }

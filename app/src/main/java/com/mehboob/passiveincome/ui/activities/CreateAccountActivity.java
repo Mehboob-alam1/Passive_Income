@@ -169,8 +169,14 @@ sharedPref= new SharedPref(this);
     }
 
     private void updateUI() {
-        startActivity(new Intent(CreateAccountActivity.this, CheckReferralActivity.class));
-        finish();
+
+
+        Intent i = new Intent(CreateAccountActivity.this,CheckReferralActivity.class);
+        i.putExtra("code",binding.etReferralId.getText().toString());
+        startActivity(i);
+
+//        startActivity(new Intent(CreateAccountActivity.this, CheckReferralActivity.class));
+//        finish();
     }
 
     @Override

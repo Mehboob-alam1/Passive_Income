@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,27 +22,36 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.mehboob.passiveincome.databinding.ActivityCheckReferralBinding;
+import com.mehboob.passiveincome.ui.models.Balance;
 import com.mehboob.passiveincome.ui.models.Referrals;
 import com.mehboob.passiveincome.ui.models.User;
 
 import java.util.UUID;
 
 public class CheckReferralActivity extends AppCompatActivity {
-private ActivityCheckReferralBinding binding;
-  private   DatabaseReference userRef;
-  private boolean isProfileCompleted;
+    private ActivityCheckReferralBinding binding;
+    private DatabaseReference userRef, profitFromReferrals, balanceRef;
+    private String balanceOfReferral;
+    private String referrerId;
+    private String referralCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding=ActivityCheckReferralBinding.inflate(getLayoutInflater());
+        binding = ActivityCheckReferralBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    userRef   = FirebaseDatabase.getInstance().getReference().child("Users");
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        profitFromReferrals = FirebaseDatabase.getInstance().getReference().child("profitFromReferrals");
+        balanceRef = FirebaseDatabase.getInstance().getReference().child("Balance");
+        referralCode = getIntent().getStringExtra("code");
 
+
+        binding.etReferralId.setText(referralCode);
         binding.btnCheckReferral.setOnClickListener(v -> {
-            if (binding.etReferralId.getText().toString().isEmpty()){
+            if (binding.etReferralId.getText().toString().isEmpty()) {
                 Toast.makeText(this, "Enter referral id", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 checkReferral(binding.etReferralId.getText().toString());
             }
         });
@@ -49,6 +59,8 @@ private ActivityCheckReferralBinding binding;
         binding.btnSkip.setOnClickListener(v -> {
             updateUI();
         });
+
+        getBalanceOfReferral(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
     }
 
@@ -62,11 +74,11 @@ private ActivityCheckReferralBinding binding;
                     DataSnapshot referrerSnapshot = dataSnapshot.getChildren().iterator().next();
                     String referrerId = referrerSnapshot.child("user_id").getValue(String.class);
                     String referrerCode = referrerSnapshot.child("referral_id").getValue(String.class);
-                    Toast.makeText(CheckReferralActivity.this, ""+referrerCode + " " +referrerId, Toast.LENGTH_SHORT).show();
-                   handleValidReferralCode(referrerId, referrerCode);
+                    Toast.makeText(CheckReferralActivity.this, "" + referrerCode + " " + referrerId, Toast.LENGTH_SHORT).show();
+                    handleValidReferralCode(referrerId, referrerCode);
                 } else {
                     // Invalid referral code
-                   // handleInvalidReferralCode();
+                    // handleInvalidReferralCode();
                     Toast.makeText(CheckReferralActivity.this, "Invalid id", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -74,8 +86,8 @@ private ActivityCheckReferralBinding binding;
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Error occurred while validating referral code
-               // handleReferralCodeValidationFailure(databaseError.getMessage());
-                Toast.makeText(CheckReferralActivity.this, ""+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                // handleReferralCodeValidationFailure(databaseError.getMessage());
+                Toast.makeText(CheckReferralActivity.this, "" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -102,40 +114,71 @@ private ActivityCheckReferralBinding binding;
             public void onComplete(DatabaseError databaseError, boolean committed, DataSnapshot dataSnapshot) {
                 if (committed) {
                     // User added to the referrer's tree successfully
-                   handleReferralAddedToTree(referrerId);
+                    handleReferralAddedToTree(referrerId);
                 } else {
                     // Failed to add user to the referrer's tree
-                  //  handleReferralTreeUpdateFailure(databaseError.getMessage());
+                    //  handleReferralTreeUpdateFailure(databaseError.getMessage());
                 }
             }
         });
     }
 
     private void handleReferralAddedToTree(String referrerId) {
-        String pushId= UUID.randomUUID().toString();
-        Referrals referrals = new Referrals(FirebaseAuth.getInstance().getCurrentUser().getUid(),pushId);
-        DatabaseReference reference =FirebaseDatabase.getInstance().getReference("Referrals");
-          reference.child(referrerId)
+        String pushId = UUID.randomUUID().toString();
+        Referrals referrals = new Referrals(FirebaseAuth.getInstance().getCurrentUser().getUid(), pushId);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Referrals");
+        reference.child(referrerId)
                 .child(pushId)
-                .setValue(referrals).addOnCompleteListener(new OnCompleteListener<Void>() {
-                      @Override
-                      public void onComplete(@NonNull Task<Void> task) {
-                          if (task.isComplete()&& task.isSuccessful()){
-                              updateUI();
-                          }else {
-                              Toast.makeText(CheckReferralActivity.this, "Something went wrong! Try again", Toast.LENGTH_SHORT).show();
-                          }
-                      }
-                  }).addOnFailureListener(new OnFailureListener() {
-                      @Override
-                      public void onFailure(@NonNull Exception e) {
+                .setValue(referrals).addOnCompleteListener(task -> {
+                    if (task.isComplete() && task.isSuccessful()) {
+                        updateUI();
+                    } else {
+                        Toast.makeText(CheckReferralActivity.this, "Something went wrong! Try again", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> {
 
-                      }
-                  });
+                });
 
 
     }
 
+    private void getBalanceOfReferral(String userId) {
+
+        balanceRef.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Balance balance = snapshot.getValue(Balance.class);
+
+                    balanceOfReferral = balance.getTotalBalance();
+
+                    saveProfitToReferee();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    private void saveProfitToReferee() {
+        int profitPercent = (int) (Integer.parseInt(balanceOfReferral) * 0.15);
+        profitFromReferrals.child(referrerId).child("profitBalance")
+                .setValue(String.valueOf(profitPercent))
+                .addOnCompleteListener(task -> {
+                    if (task.isComplete() && task.isSuccessful()) {
+                        Log.d("Refferal Activity", "Added 15% Profit");
+                    }
+                }).addOnFailureListener(e -> {
+                    Log.d("Refferal Activity", e.getLocalizedMessage());
+                });
+
+
+    }
 
     private void updateUI() {
         startActivity(new Intent(CheckReferralActivity.this, HomeActivity.class));
@@ -145,54 +188,8 @@ private ActivityCheckReferralBinding binding;
     @Override
     protected void onStart() {
         super.onStart();
-//        if (FirebaseAuth.getInstance().getCurrentUser()!=null) {
-//            updateUI();
-//           // checkIfProfileCompleted(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//        }
-      //  checkIfProfileCompleted(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+
     }
-    private void checkIfProfileCompleted(String userId) {
 
-        userRef.child(userId)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-                            User user =snapshot.getValue(User.class);
-                            if (user.getCnic_front().isEmpty()){
-                                Toast.makeText(CheckReferralActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(CheckReferralActivity.this,HomeActivity.class));
-                                finishAffinity();
-                            }else {
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-//        mRef.child(userId)
-//                .child("complete")
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.exists()){
-//                            isProfileCompleted=   snapshot.getValue(boolean.class);
-//                            if (isProfileCompleted)
-//                                updateUI();
-//
-//                        }else if (FirebaseAuth.getInstance().getCurrentUser()!=null ){
-//                           updateUI();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-    }
 }
