@@ -135,7 +135,7 @@ sharedPref= new SharedPref(this);
 //                        binding.textCreate.setVisibility(View.VISIBLE);
 //                        binding.progressSignUp.setVisibility(View.GONE);
 //         binding.textCreate.setText("Authenticated ! Save the data");
-                        uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false));
+                        uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false,String.valueOf(System.currentTimeMillis())));
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -201,7 +201,7 @@ sharedPref= new SharedPref(this);
             // Get the download URL of the image from Firebase Storage
             imageReference.getDownloadUrl().addOnSuccessListener(downloadUrl -> {
 
-              uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"","",false,false));
+              uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"","",false,false,String.valueOf(System.currentTimeMillis())));
 
                 Toast.makeText(getApplicationContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
             });

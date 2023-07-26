@@ -2,7 +2,7 @@ package com.mehboob.passiveincome.ui.models;
 
 public class User {
 
-    private String email,password,first_name,sur_name,phone_number,referral_id,address,user_id,user_image,cnic_front,cnic_back;
+    private String email,password,first_name,sur_name,phone_number,referral_id,address,user_id,user_image,cnic_front,cnic_back,dateAuth;
     private boolean isBlock,isComplete;
 
 
@@ -10,7 +10,7 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address, String user_id, String user_image, String cnic_front, String cnic_back, boolean isBlock, boolean isComplete) {
+    public User(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address, String user_id, String user_image, String cnic_front, String cnic_back, boolean isBlock, boolean isComplete, String dateAuth) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
@@ -24,6 +24,16 @@ public class User {
         this.cnic_back = cnic_back;
         this.isBlock = isBlock;
         this.isComplete = isComplete;
+        this.dateAuth=dateAuth;
+    }
+
+
+    public String getDateAuth() {
+        return dateAuth;
+    }
+
+    public void setDateAuth(String dateAuth) {
+        this.dateAuth = dateAuth;
     }
 
     public boolean isComplete() {
