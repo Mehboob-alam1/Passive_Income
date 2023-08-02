@@ -60,7 +60,7 @@ public class CheckReferralActivity extends AppCompatActivity {
             updateUI();
         });
 
-        getBalanceOfReferral(FirebaseAuth.getInstance().getCurrentUser().getUid());
+      //  getBalanceOfReferral(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
     }
 

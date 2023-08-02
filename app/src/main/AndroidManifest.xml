@@ -38,11 +38,12 @@
         </activity>
         <activity
             android:name=".ui.activities.CheckReferralActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/noactiondisplay">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
         <activity
             android:name=".ui.activities.AboutUsActivity"
@@ -148,27 +149,31 @@
                 android:name="android.app.lib_name"
                 android:value="" />
 
+
+        </activity>
+        <activity
+            android:name=".ui.activities.CreateAccountActivity"
+            android:exported="true"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+
+        </activity>
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:exported="true"
+            android:theme="@style/noactiondisplay">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.activities.CreateAccountActivity"
-            android:exported="false"
-            android:theme="@style/noactiondisplay">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.activities.LoginActivity"
-            android:exported="false"
-            android:theme="@style/noactiondisplay">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".ui.activities.MainActivity"
@@ -177,6 +182,8 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
+
         </activity>
 
         <meta-data

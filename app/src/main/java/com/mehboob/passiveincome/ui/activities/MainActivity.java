@@ -30,18 +30,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     String prevStarted = "yes";
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
-        if (!sharedpreferences.getBoolean(prevStarted, false)) {
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putBoolean(prevStarted, Boolean.TRUE);
-            editor.apply();
-        } else {
-            moveToSecondary();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+//        if (!sharedpreferences.getBoolean(prevStarted, false)) {
+//            SharedPreferences.Editor editor = sharedpreferences.edit();
+//            editor.putBoolean(prevStarted, Boolean.TRUE);
+//            editor.apply();
+//        } else {
+//            moveToSecondary();
+//        }
+//    }
 private ActivityMainBinding binding;
     private ViewPagerAdapter adapter;
     private DatabaseReference userRef;
@@ -140,13 +140,13 @@ private ActivityMainBinding binding;
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-
-            checkIsActive(currentUser);
-
-        }
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//
+//            checkIsActive(currentUser);
+//
+//        }
     }
 
     private void checkIsActive(FirebaseUser user) {

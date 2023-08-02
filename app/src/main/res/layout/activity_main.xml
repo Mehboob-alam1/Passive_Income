@@ -37,38 +37,45 @@
         app:selectedDotColor="@color/purple" />
 
 
-    <TextView
+    <soup.neumorphism.NeumorphButton
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/btn_background"
+
         android:fontFamily="@font/poppins_medium"
         android:paddingTop="13dp"
         android:paddingBottom="10dp"
         android:text="Get Started"
         android:textAlignment="center"
+        app:neumorph_shapeType="pressed"
+        android:gravity="center_vertical"
+        app:neumorph_backgroundColor="@color/white"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:background="@color/white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <soup.neumorphism.NeumorphButton
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_background"
+        android:background="@color/white"
         android:fontFamily="@font/poppins_medium"
         android:paddingTop="13dp"
+        app:neumorph_shapeType="pressed"
+        app:neumorph_backgroundColor="@color/white"
         android:paddingBottom="10dp"
         android:text="Next"
+        android:gravity="center_vertical"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"

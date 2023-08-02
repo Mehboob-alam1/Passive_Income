@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private String userReferralCode;
     private boolean isProfileCompleted;
     private SharedPref sharedPref;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,10 @@ sharedPref= new SharedPref(this);
         mRef = FirebaseDatabase.getInstance().getReference("Users");
         storageReference= FirebaseStorage.getInstance().getReference("Users");
         userReferralCode = UUID.randomUUID().toString().substring(0, 8);
+        dialog= new ProgressDialog(this);
+
+        dialog.setMessage("Please wait......");
+        dialog.setCancelable(false);
         binding.btnBack.setOnClickListener(v -> {
             onBackPressed();
         });
@@ -123,8 +129,7 @@ sharedPref= new SharedPref(this);
     }
 
     private void createAccount(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address) {
-        binding.textCreate.setVisibility(View.GONE);
-        binding.progressSignUp.setVisibility(View.VISIBLE);
+       dialog.show();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -139,8 +144,7 @@ sharedPref= new SharedPref(this);
                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
-                        binding.textCreate.setVisibility(View.VISIBLE);
-                        binding.progressSignUp.setVisibility(View.GONE);
+                      dialog.dismiss();
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
@@ -154,14 +158,12 @@ sharedPref= new SharedPref(this);
 
         mRef.child(userId).setValue(user).addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()) {
-                binding.textCreate.setVisibility(View.VISIBLE);
-                binding.progressSignUp.setVisibility(View.GONE);
+             dialog.dismiss();
                 sharedPref.saveIsUser(true);
                 updateUI();
                 Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
             } else {
-                binding.textCreate.setVisibility(View.VISIBLE);
-                binding.progressSignUp.setVisibility(View.GONE);
+               dialog.dismiss();
                 Toast.makeText(CreateAccountActivity.this, "Something went wrong! Try again", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e -> Toast.makeText(CreateAccountActivity.this, "Error adding data : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
@@ -193,8 +195,7 @@ sharedPref= new SharedPref(this);
         String imageName = UUID.randomUUID().toString() + ".jpg";
         StorageReference imageReference=        storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Image");
 
-        binding.textCreate.setVisibility(View.GONE);
-        binding.progressSignUp.setVisibility(View.VISIBLE);
+       dialog.show();
         // Upload image to Firebase Storage
         UploadTask uploadTask = imageReference.putFile(imageUri);
         uploadTask.addOnSuccessListener(taskSnapshot -> {
@@ -207,8 +208,7 @@ sharedPref= new SharedPref(this);
             });
         }).addOnFailureListener(e -> {
             // Display an error message to the user
-            binding.textCreate.setVisibility(View.VISIBLE);
-            binding.progressSignUp.setVisibility(View.GONE);
+          dialog.dismiss();
             Toast.makeText(getApplicationContext(), "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }

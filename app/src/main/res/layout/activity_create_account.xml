@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.CreateAccountActivity">
 
 
@@ -14,17 +14,22 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/edittext_bg"
+        android:background="@color/white"
         tools:context=".ui.activities.CreateAccountActivity">
 
 
-        <ImageView
+        <soup.neumorphism.NeumorphImageView
             android:id="@+id/btn_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            app:neumorph_strokeWidth="8dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
             android:src="@drawable/img_back"
+            app:neumorph_shapeType="flat"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +40,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Create an account"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
          android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back" />
@@ -55,7 +60,7 @@
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/poppins_regular"
         android:text="It's so great to have you here"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -71,7 +76,7 @@
 
         android:layout_marginTop="5dp"
         android:text="Upload real pic otherwise your balance can't reach"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
 
 
@@ -89,26 +94,46 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lineProfilePic">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
+        <soup.neumorphism.NeumorphCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+app:neumorph_strokeWidth="8dp"
 
-            <EditText
-                android:id="@+id/etEmail"
+       app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edittext_bg"
-                android:hint="Enter email or username"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="8dp"
+android:background="@null"
+                    android:hint="Enter email or username"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,23 +141,41 @@
                 android:layout_marginTop="16dp"
                 android:text="Password"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/et_password"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:background="@drawable/edittext_bg"
-                android:drawableEnd="@drawable/ic_password_toggle"
-                android:drawableRight="@drawable/ic_password_toggle"
-                android:hint="Enter your password"
-                android:inputType="textPassword"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@null"
+                    android:drawableEnd="@drawable/ic_password_toggle"
+                    android:drawableRight="@drawable/ic_password_toggle"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+
 
 
             <TextView
@@ -141,20 +184,38 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="First Name"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/etFirstName"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edittext_bg"
-                android:fontFamily="@font/poppins_regular"
-                android:hint="Enter first name"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Enter first name"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,20 +223,39 @@
                 android:layout_marginTop="16dp"
                 android:text="Last name"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/etSurname"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edittext_bg"
-                android:hint="Enter surname"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_regular"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etSurname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="Enter surname"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -183,20 +263,40 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Phone Number"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/etPhoneNumber"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
-                android:fontFamily="@font/poppins_regular"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edittext_bg"
-                android:hint="Enter phone number"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="Enter phone number"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </soup.neumorphism.NeumorphCardView>
+
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,20 +304,39 @@
                 android:fontFamily="@font/poppins_regular"
                 android:layout_marginTop="16dp"
                 android:text="Referal Code (optional)"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/etReferralId"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edittext_bg"
-                android:hint="Enter referral ID"
-                android:padding="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etReferralId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="Enter referral ID"
+                    android:padding="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -225,20 +344,42 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Address"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/etAddress"
+                android:textColor="@color/black" />
+            <soup.neumorphism.NeumorphCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:background="@drawable/edittext_bg"
-                android:hint="Enter your real address"
-                android:padding="16dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="14sp" />
+                app:neumorph_strokeWidth="8dp"
+
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="basin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@null"
+                    android:hint="Enter your real address"
+                    android:padding="16dp"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -254,32 +395,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:background="@drawable/btn_background"
+            <soup.neumorphism.NeumorphButton
                 android:id="@+id/btnCreateAccount"
-                android:layout_height="50dp" >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:id="@+id/textCreate"
-                    android:textAlignment="center"
-                    android:text="Create Account"
+                android:layout_width="match_parent"
+                app:neumorph_strokeWidth="8dp"
 
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                   android:fontFamily="@font/poppins_bold" />
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:text="Sign in"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                app:neumorph_shapeType="flat" />
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:background="@drawable/btn_background"-->
+<!--                android:id="@+id/btnCreateAccount"-->
+<!--                android:layout_height="50dp" >-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:id="@+id/textCreate"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:text="Create Account"-->
 
-                <ProgressBar
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:visibility="invisible"
-                    android:id="@+id/progressSignUp"
-                    android:layout_centerInParent="true"
-                    />
-            </RelativeLayout>
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/black"-->
+<!--                   android:fontFamily="@font/poppins_bold" />-->
+
+<!--                <ProgressBar-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:visibility="invisible"-->
+<!--                    android:id="@+id/progressSignUp"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    />-->
+<!--            </RelativeLayout>-->
 
 
             <LinearLayout
@@ -295,7 +451,7 @@
 
                     android:text="Already have an account?"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
@@ -304,7 +460,7 @@
                     android:layout_height="wrap_content"
                     android:text="SignIn"
                     android:textAlignment="center"
-                    android:textColor="@color/purple"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </LinearLayout>

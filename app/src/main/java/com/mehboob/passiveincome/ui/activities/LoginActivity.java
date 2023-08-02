@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -32,20 +33,21 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
-    private static final String TAG="LoginActivity";
+    private static final String TAG = "LoginActivity";
     private boolean isProfileCompleted;
     private SharedPref sharedPref;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         sharedPref = new SharedPref(this);
-userRef= FirebaseDatabase.getInstance().getReference("Users");
+        userRef = FirebaseDatabase.getInstance().getReference("Users");
         binding.txtSignup.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class));
+            startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
         });
 
 
@@ -55,7 +57,7 @@ userRef= FirebaseDatabase.getInstance().getReference("Users");
             else if (binding.etPassword.getText().toString().isEmpty())
                 Toast.makeText(this, "Password field cannot be empty", Toast.LENGTH_SHORT).show();
             else
-                singIn(binding.etEmail.getText().toString(),binding.etPassword.getText().toString());
+                singIn(binding.etEmail.getText().toString(), binding.etPassword.getText().toString());
         });
         binding.etPassword.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -82,8 +84,10 @@ userRef= FirebaseDatabase.getInstance().getReference("Users");
     }
 
     private void singIn(String email, String password) {
-binding.textSign.setVisibility(View.GONE);
-binding.progressSignIn.setVisibility(View.VISIBLE);
+        dialog= new ProgressDialog(this);
+        dialog.setTitle("Signing");
+        dialog.setMessage("Please wait.....");
+        dialog.show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -91,14 +95,12 @@ binding.progressSignIn.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            binding.textSign.setVisibility(View.VISIBLE);
-                            binding.progressSignIn.setVisibility(View.GONE);
+                           dialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI();
                         } else {
                             // If sign in fails, display a message to the user.
-                            binding.textSign.setVisibility(View.VISIBLE);
-                            binding.progressSignIn.setVisibility(View.GONE);
+                           dialog.dismiss();
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -106,22 +108,23 @@ binding.progressSignIn.setVisibility(View.VISIBLE);
                         }
                     }
                 });
-        
+
     }
 
     private void updateUI() {
 
-        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         finish();
     }
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
 
-           updateUI();
+            updateUI();
 
             //checkIfProfileCompleted(currentUser.getUid());
         }
@@ -133,12 +136,12 @@ binding.progressSignIn.setVisibility(View.VISIBLE);
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-                         isProfileCompleted=   snapshot.getValue(boolean.class);
-                         if (isProfileCompleted)
-                             updateUI();
+                        if (snapshot.exists()) {
+                            isProfileCompleted = snapshot.getValue(boolean.class);
+                            if (isProfileCompleted)
+                                updateUI();
 
-                        }else{
+                        } else {
 
                         }
                     }
