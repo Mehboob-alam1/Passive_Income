@@ -1,481 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.HomeFragment" >
-
-
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ui.fragments.HomeFragment">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.fragments.HomeFragment">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/userImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:src="@color/white"
-            app:civ_border_color="@color/purple"
-            app:civ_border_width="3dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/userImage"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="0dp"
+                android:src="@color/white"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="3dp" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User name"
-                android:id="@+id/txtUserNameHome"
-                android:textSize="12sp"
-                android:textColor="@color/black" />
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/userImage"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:text="Take a walk, you’ll be glad you did"
-                android:textColor="@color/black" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtUserNameHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User name"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_notification" />
-    </RelativeLayout>
-    <androidx.cardview.widget.CardView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Take a walk, you’ll be glad you did"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_notification" />
+        </RelativeLayout>
+
+        <soup.neumorphism.NeumorphCardView
         android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/imageSliderMain"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:dotsCornerRadius="8dp"
-            app:dotsSize="6dp"
-            app:dotsSpacing="1dp"
-            app:dotsWidthFactor="2.5"
-            app:progressMode="true"
-
-            app:sliderAnimationDuration="600"
-            app:sliderAutoCycleDirection="back_and_forth"
-            app:sliderAutoCycleEnabled="true"
-            app:sliderIndicatorAnimationDuration="600"
-            app:sliderIndicatorGravity="end|bottom"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="@color/purple_light"
-            app:sliderScrollTimeInSec="1"
-            app:sliderStartAutoCycle="true" />
-
-    </androidx.cardview.widget.CardView>
-
-    <soup.neumorphism.NeumorphCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:neumorph_strokeWidth="8dp"
-        android:id="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:neumorph_backgroundColor="@color/colorBackgroundDarker"
         app:neumorph_shadowElevation="8dp"
-        app:neumorph_shapeType="basin">
-        <LinearLayout
+        app:neumorph_shapeType="basin"
+        app:neumorph_strokeWidth="8dp">
 
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSliderMain"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="6dp"
+                app:dotsSpacing="1dp"
+                app:dotsWidthFactor="2.5"
+                app:progressMode="true"
+
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="end|bottom"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="@color/purple_light"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
 
-            android:orientation="vertical"
-          >
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/btnPaymentRules"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Payment Rules"
-                    android:padding="5dp"
-                    android:background="@drawable/green_back"
-                    android:textSize="10sp"
-                    android:layout_marginStart="16dp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/purple" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="72dp"
-                    android:text="My Wallet Balance"
 
-                    android:textAlignment="center"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-
-            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_height="wrap_content" >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
 
-                        android:text="0"
-                        android:id="@+id/txtUserBalance"
-                        android:textSize="18sp"
-                        android:textAlignment="center"
-                        android:textColor="@color/black" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <TextView
+                        android:id="@+id/btnPaymentRules"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginStart="5dp"
-                        android:text="PKR"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/green_back"
+                        android:padding="5dp"
+                        android:text="Payment Rules"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="72dp"
+                        android:text="My Wallet Balance"
+
                         android:textAlignment="center"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_file" />
-            </RelativeLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-                <soup.neumorphism.NeumorphCardView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:neumorph_strokeWidth="8dp"
-                    android:id="@+id/btnDeposit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnWithdraw"
+                    android:padding="8dp">
 
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                    app:neumorph_shadowElevation="8dp"
-                    app:neumorph_shapeType="flat">
                     <LinearLayout
-
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-   >
-
-                            <ImageView
-                                android:id="@+id/imgDeposit"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/ic_deposit" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Deposit"
-                                android:textSize="10sp"
-                               android:layout_below="@id/imgDeposit"
-                                android:textAlignment="center"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-
-
-                    </LinearLayout>
-                </soup.neumorphism.NeumorphCardView>
-
-                <soup.neumorphism.NeumorphCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:neumorph_strokeWidth="8dp"
-                    android:id="@+id/btnWithdraw"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnDeposit"
-                    app:layout_constraintEnd_toStartOf="@+id/btnAboutUs"
-
-                    app:layout_constraintStart_toEndOf="@+id/btnDeposit"
-                    app:layout_constraintTop_toTopOf="@+id/btnDeposit"
-
-
-                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                    app:neumorph_shadowElevation="8dp"
-                    app:neumorph_shapeType="flat">
-                    <LinearLayout
-
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            >
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/ic_withdraw" />
-                        </RelativeLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:id="@+id/txtUserBalance"
+                            android:layout_width="wrap_content"
+
                             android:layout_height="wrap_content"
-                            android:text="Withdraw"
+                            android:text="0"
                             android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:textColor="@color/black" />
-
-
-                    </LinearLayout>
-                </soup.neumorphism.NeumorphCardView>
-
-                <soup.neumorphism.NeumorphCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:neumorph_strokeWidth="8dp"
-                    android:id="@+id/btnAboutUs"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnWithdraw"
-                    app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btnWithdraw"
-                    app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
-
-                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                    app:neumorph_shadowElevation="8dp"
-                    app:neumorph_shapeType="flat">
-                    <LinearLayout
-
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                           >
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/ic_aboutus" />
-                        </RelativeLayout>
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="About us"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="PKR"
                             android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:textColor="@color/black" />
-
-
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
                     </LinearLayout>
 
-                </soup.neumorphism.NeumorphCardView>
-                <soup.neumorphism.NeumorphCardView
-                    android:layout_width="wrap_content"
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_file" />
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:neumorph_strokeWidth="8dp"
-                    android:id="@+id/btnWhatsapp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnAboutUs"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
 
-                    app:layout_constraintStart_toEndOf="@+id/btnAboutUs"
-                    app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
-                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                    app:neumorph_shadowElevation="8dp"
-                    app:neumorph_shapeType="flat">
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/btnDeposit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnWithdraw"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
 
-                    <LinearLayout
+                        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                        app:neumorph_shadowElevation="8dp"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeWidth="8dp">
 
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        <LinearLayout
 
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                           >
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/ic_whatsapp" />
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Contact us"
-                            android:textSize="10sp"
-                            android:textAlignment="center"
-                            android:textColor="@color/black" />
-
-
-                    </LinearLayout>
-                </soup.neumorphism.NeumorphCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-    </soup.neumorphism.NeumorphCardView>
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
 
 
+                                <ImageView
+                                    android:id="@+id/imgDeposit"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:src="@drawable/ic_deposit" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:text="Deposit"
+                                    android:textAlignment="center"
+                                    android:layout_marginTop="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp" />
 
 
-    <androidx.cardview.widget.CardView
+
+                        </LinearLayout>
+                    </soup.neumorphism.NeumorphCardView>
+
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/btnWithdraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnDeposit"
+                        app:layout_constraintEnd_toStartOf="@+id/btnAboutUs"
+                        app:layout_constraintStart_toEndOf="@+id/btnDeposit"
+
+                        app:layout_constraintTop_toTopOf="@+id/btnDeposit"
+                        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+
+
+                        app:neumorph_shadowElevation="8dp"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeWidth="8dp">
+
+                        <LinearLayout
+
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+
+                                <ImageView
+                                    android:id="@+id/imgWithdraw"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:src="@drawable/ic_withdraw" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Withdraw"
+                                    android:textAlignment="center"
+                                    android:layout_marginTop="5dp"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp" />
+
+
+
+
+
+                        </LinearLayout>
+                    </soup.neumorphism.NeumorphCardView>
+
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/btnAboutUs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnWithdraw"
+                        app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnWithdraw"
+                        app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
+                        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+
+                        app:neumorph_shadowElevation="8dp"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeWidth="8dp">
+
+                        <LinearLayout
+
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:id="@+id/imgAbout"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:src="@drawable/ic_aboutus" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="About us"
+                                    android:layout_marginTop="5dp"
+
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp" />
+
+
+
+
+                        </LinearLayout>
+
+                    </soup.neumorphism.NeumorphCardView>
+
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/btnWhatsapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnAboutUs"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnAboutUs"
+
+                        app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
+                        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                        app:neumorph_shadowElevation="8dp"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeWidth="8dp">
+
+                        <LinearLayout
+
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:id="@+id/imgWhat"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+                                    android:src="@drawable/ic_whatsapp" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Contact us"
+
+                                    android:layout_marginTop="5dp"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp" />
+
+
+
+
+
+                        </LinearLayout>
+                    </soup.neumorphism.NeumorphCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+      <soup.neumorphism.NeumorphCardView
         android:id="@+id/cardInvite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView1"
-       >
+        app:layout_constraintTop_toBottomOf="@+id/cardView1"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin"
+        app:neumorph_strokeWidth="8dp">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/purple">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/white">
 
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/txtReferTitle"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-android:textSize="12sp"
-                    android:text="Refer and Earn"
-                    android:textColor="@color/black" />
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Invite your friends and get 15%\nof every member !"
-                    android:textSize="10sp" />
+                    <TextView
+                        android:id="@+id/txtReferTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Refer and Earn"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Invite your friends and get 15%\nof every member !"
+                        android:textSize="10sp" />
 
-            <RelativeLayout
-                android:id="@+id/relativeLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout4"
-                app:layout_constraintTop_toTopOf="parent">
+                </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/img_gift"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/white_circle"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_gift" />
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_toEndOf="@id/img_gift"
-                    android:src="@drawable/ic_question" />
+                    <ImageView
+                        android:id="@+id/img_gift"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/white_circle"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_gift" />
 
-
-            </RelativeLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/img_gift"
+                        android:src="@drawable/ic_question" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+      </soup.neumorphism.NeumorphCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

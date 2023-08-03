@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.PaymentRulesActivity">
 
     <TextView
@@ -72,7 +72,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/rules_text"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
         <TextView
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/rules_Text_urdu"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
