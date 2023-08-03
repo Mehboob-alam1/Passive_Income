@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.HomeFragment" >
 
 
 <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.fragments.HomeFragment">
 
     <RelativeLayout
@@ -49,14 +49,14 @@
                 android:text="User name"
                 android:id="@+id/txtUserNameHome"
                 android:textSize="12sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:text="Take a walk, you’ll be glad you did"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <ImageView
@@ -97,558 +97,302 @@
             app:sliderIndicatorPadding="3dp"
             app:sliderIndicatorRadius="2dp"
             app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderIndicatorUnselectedColor="@color/purple_light"
             app:sliderScrollTimeInSec="1"
             app:sliderStartAutoCycle="true" />
 
     </androidx.cardview.widget.CardView>
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+
+    <soup.neumorphism.NeumorphCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/back_home"
-        android:orientation="vertical"
+        app:neumorph_strokeWidth="8dp"
+        android:id="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/btnPaymentRules"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Payment Rules"
-        android:padding="5dp"
-        android:background="@drawable/green_back"
-        android:textSize="10sp"
-        android:layout_marginStart="16dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/purple" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="72dp"
-        android:text="My Wallet Balance"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin">
+        <LinearLayout
 
-android:textAlignment="center"
-        android:textColor="@color/white" />
-</LinearLayout>
-
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:layout_height="wrap_content" >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
 
-        android:text="0"
-        android:id="@+id/txtUserBalance"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:textColor="@color/white" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:text="PKR"
-        android:textSize="10sp"
-        android:textAlignment="center"
-        android:textColor="@color/white" />
-</LinearLayout>
-
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_file" />
-        </RelativeLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal">
-
+            android:orientation="vertical"
+          >
             <LinearLayout
-                android:id="@+id/btnDeposit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnPaymentRules"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Payment Rules"
+                    android:padding="5dp"
+                    android:background="@drawable/green_back"
+                    android:textSize="10sp"
+                    android:layout_marginStart="16dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="72dp"
+                    android:text="My Wallet Balance"
+
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:padding="8dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="0"
+                        android:id="@+id/txtUserBalance"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="5dp"
+                        android:text="PKR"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_file" />
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnWithdraw"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <RelativeLayout
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_icons">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_deposit" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
+                android:orientation="horizontal">
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deposit"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white" />
+                    app:neumorph_strokeWidth="8dp"
+                    android:id="@+id/btnDeposit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnWithdraw"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="flat">
+                    <LinearLayout
+
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+   >
+
+                            <ImageView
+                                android:id="@+id/imgDeposit"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_deposit" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Deposit"
+                                android:textSize="10sp"
+                               android:layout_below="@id/imgDeposit"
+                                android:textAlignment="center"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
 
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/btnWithdraw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/btnDeposit"
-                app:layout_constraintEnd_toStartOf="@+id/btnAboutUs"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btnDeposit"
-                app:layout_constraintTop_toTopOf="@+id/btnDeposit">
 
-                <RelativeLayout
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_icons">
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_withdraw" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Withdraw"
-                    android:textAlignment="center"
-                    android:textSize="10sp"
-                    android:textColor="@color/white" />
+                    app:neumorph_strokeWidth="8dp"
+                    android:id="@+id/btnWithdraw"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnDeposit"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAboutUs"
+
+                    app:layout_constraintStart_toEndOf="@+id/btnDeposit"
+                    app:layout_constraintTop_toTopOf="@+id/btnDeposit"
 
 
-            </LinearLayout>
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="flat">
+                    <LinearLayout
 
-            <LinearLayout
-                android:id="@+id/btnAboutUs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/btnWithdraw"
-                app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btnWithdraw"
-                app:layout_constraintTop_toTopOf="@+id/btnWithdraw">
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
 
-                <RelativeLayout
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_icons">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            >
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_aboutus" />
-                </RelativeLayout>
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_withdraw" />
+                        </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Withdraw"
+                            android:textAlignment="center"
+                            android:textSize="10sp"
+                            android:textColor="@color/black" />
+
+
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
+
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="About us"
-                    android:textAlignment="center"
-                    android:textSize="10sp"
-                    android:textColor="@color/white" />
+                    app:neumorph_strokeWidth="8dp"
+                    android:id="@+id/btnAboutUs"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnWithdraw"
+                    app:layout_constraintEnd_toStartOf="@+id/btnWhatsapp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/btnWithdraw"
+                    app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
+
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="flat">
+                    <LinearLayout
+
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                           >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_aboutus" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="About us"
+                            android:textAlignment="center"
+                            android:textSize="10sp"
+                            android:textColor="@color/black" />
 
 
-            </LinearLayout>
+                    </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/btnWhatsapp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/btnAboutUs"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btnAboutUs"
-                app:layout_constraintTop_toTopOf="@+id/btnWithdraw">
-
-                <RelativeLayout
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_icons">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_whatsapp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
+                </soup.neumorphism.NeumorphCardView>
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contact us"
-                    android:textSize="10sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white" />
+                    app:neumorph_strokeWidth="8dp"
+                    android:id="@+id/btnWhatsapp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnAboutUs"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintStart_toEndOf="@+id/btnAboutUs"
+                    app:layout_constraintTop_toTopOf="@+id/btnWithdraw"
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="flat">
+
+                    <LinearLayout
+
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                           >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_whatsapp" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contact us"
+                            android:textSize="10sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/black" />
 
 
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
 
-    </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:background="@drawable/bg_icons"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">-->
+        </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
 
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
 
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textViewPackage"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="3 days package"-->
-<!--                android:textColor="@color/white"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnBasicPackage"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="22dp"-->
-<!--                android:background="@drawable/bg_start"-->
-<!--                android:padding="5dp"-->
-<!--                android:text="Start"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/red"-->
-<!--                android:textSize="8sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/textViewPackage" />-->
-
-<!--            <LinearLayout-->
-
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="8dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textViewPackage">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:background="@drawable/white_circle"-->
-<!--                    android:padding="4dp"-->
-<!--                    android:src="@drawable/ic_home"-->
-<!--                    app:tint="@color/black" />-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:text="Basic package for 3 days"-->
-<!--                        android:textColor="@color/white" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Amount invested"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="10sp" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:gravity="end"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtBasicProfitPercentage"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="3.2% /day"-->
-<!--                        android:textColor="@color/red"-->
-<!--                        android:textSize="8sp" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtBasicRange"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="1000 - 5000"-->
-<!--                        android:textColor="@color/green"-->
-<!--                        android:textSize="8sp" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="2dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:background="@color/white" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnStandardPackage"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="22dp"-->
-<!--                android:background="@drawable/bg_start"-->
-<!--                android:padding="5dp"-->
-<!--                android:text="Start"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/red"-->
-<!--                android:textSize="8sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <LinearLayout-->
-
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="8dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/btnStandardPackage">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:background="@drawable/white_circle"-->
-<!--                    android:padding="1dp"-->
-<!--                    android:src="@drawable/standard_package" />-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:text="Standard package for 7 days"-->
-<!--                        android:textColor="@color/white" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Amount invested"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="10sp" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:gravity="end"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtStandardProfitPercentage"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="4.2% /day"-->
-<!--                        android:textColor="@color/red"-->
-<!--                        android:textSize="8sp" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtStandardRange"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="5000 - 20000"-->
-<!--                        android:textColor="@color/green"-->
-<!--                        android:textSize="8sp" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="2dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:background="@color/white" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnPremiumPackage"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="22dp"-->
-<!--                android:background="@drawable/bg_start"-->
-<!--                android:padding="5dp"-->
-<!--                android:text="Start"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/red"-->
-<!--                android:textSize="8sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <LinearLayout-->
-
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="8dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/btnPremiumPackage">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:background="@drawable/white_circle"-->
-<!--                    android:padding="1dp"-->
-<!--                    android:src="@drawable/premium_package" />-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:text="Premium package for 15 days"-->
-<!--                        android:textColor="@color/white" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Amount invested"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="10sp" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_vertical"-->
-<!--                    android:gravity="end"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtPremiumProfitPercentage"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="5.2% /day"-->
-<!--                        android:textColor="@color/red"-->
-<!--                        android:textSize="8sp" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txtPremiumRange"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="20000 - 50000"-->
-<!--                        android:textColor="@color/green"-->
-<!--                        android:textSize="8sp" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </LinearLayout>-->
 
 
     <androidx.cardview.widget.CardView

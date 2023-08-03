@@ -42,8 +42,11 @@
     <soup.neumorphism.NeumorphCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:neumorph_strokeWidth="8dp"
 
-        app:neumorph_shadowElevation="2dp"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+
         app:neumorph_shapeType="basin">
 
         <LinearLayout
@@ -78,16 +81,18 @@
     <soup.neumorphism.NeumorphButton
         android:id="@+id/btnCheckReferral"
         android:layout_width="match_parent"
+        app:neumorph_strokeWidth="8dp"
 
-        android:layout_height="60dp"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        android:layout_height="80dp"
         android:gravity="center_vertical"
         android:text="Check Referral"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:neumorph_backgroundColor="@color/white"
-        app:neumorph_shapeType="basin"
+        app:neumorph_shapeType="flat"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
         app:layout_constraintStart_toStartOf="@+id/linearLayout7"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
