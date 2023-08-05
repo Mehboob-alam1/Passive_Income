@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView5" />
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/lineBank"
+        android:id="@+id/lineUsdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Bank Account"
+                android:text="USDT (BEP 20)"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -84,10 +84,10 @@
     </soup.neumorphism.NeumorphCardView>
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/lineEasy"
+        android:id="@+id/lineBtc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineBank"
+        app:layout_constraintTop_toBottomOf="@id/lineUsdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Easy Paisa Account"
+                android:text="BTC"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -128,10 +128,10 @@
 
 
     <soup.neumorphism.NeumorphCardView
-        android:id="@+id/lineJazz"
+        android:id="@+id/lineEth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineEasy"
+        app:layout_constraintTop_toBottomOf="@id/lineBtc"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Jazz cash Account"
+                android:text="ETH"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -187,21 +187,8 @@ android:id="@+id/txtEng"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineJazz" />
+        app:layout_constraintTop_toBottomOf="@+id/lineEth" />
 
 
 
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/txt_Account_slect_urdu"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEng" />
 </androidx.constraintlayout.widget.ConstraintLayout>

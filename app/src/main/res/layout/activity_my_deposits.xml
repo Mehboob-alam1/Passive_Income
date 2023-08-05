@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.MyDepositsActivity">
 
     <ImageView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="My Deposits"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:text="No data found"
 android:visibility="gone"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

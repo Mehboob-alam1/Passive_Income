@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.MainActivity">
 
 
@@ -50,12 +50,15 @@
         android:paddingBottom="10dp"
         android:text="Get Started"
         android:textAlignment="center"
-        app:neumorph_shapeType="pressed"
+        app:neumorph_shapeType="flat"
         android:gravity="center_vertical"
-        app:neumorph_backgroundColor="@color/white"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+
+        app:neumorph_strokeWidth="8dp"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:background="@color/white"
+
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,11 +71,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/white"
+
         android:fontFamily="@font/poppins_medium"
         android:paddingTop="13dp"
-        app:neumorph_shapeType="pressed"
-        app:neumorph_backgroundColor="@color/white"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="flat"
+        app:neumorph_strokeWidth="8dp"
+
         android:paddingBottom="10dp"
         android:text="Next"
         android:gravity="center_vertical"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_contact_us"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.fragments.ContactUsFragment" >
 
 
@@ -39,7 +39,7 @@ android:id="@+id/profileImage"
             android:text="Mehboob Alam"
             android:id="@+id/txtUserName"
             android:textSize="14sp"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,175 +51,303 @@ android:id="@+id/profileImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-
- <TextView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:textColor="@color/white"
-     android:text="031719181460"
-     android:id="@+id/txtPhoneNumber"
-     android:padding="16dp"
-     android:textSize="10sp"
-     android:background="@drawable/bg_icons"
-     android:textAlignment="center"
-     android:layout_margin="12dp"/>
-        <TextView
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="mehboobcodes@gmail.com"
-            android:padding="16dp"
-            android:id="@+id/txtGmail"
-            android:textSize="10sp"
-            android:background="@drawable/bg_icons"
-            android:textAlignment="center"
-            android:layout_margin="12dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Konodass,Gilgit"
-            android:id="@+id/txtAddress"
-            android:textSize="10sp"
-            android:padding="16dp"
-            android:background="@drawable/bg_icons"
-            android:textAlignment="center"
-            android:layout_margin="12dp"/>
 
 
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="031719181460"
+                    android:id="@+id/txtPhoneNumber"
+                    android:padding="16dp"
+                    android:textSize="10sp"
+
+                    android:textAlignment="center"
+                    android:layout_margin="12dp"/>
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        app:cardCornerRadius="5dp"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin"
+        app:neumorph_strokeWidth="8dp">
         <LinearLayout
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_icons"
-            android:orientation="horizontal">
-
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Referral code : 123456"
-                android:layout_weight="3"
+                android:textColor="@color/black"
+                android:text="mehboobcodes@gmail.com"
+                android:padding="16dp"
+                android:id="@+id/txtGmail"
                 android:textSize="10sp"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/txtReferralCode"
-                android:textColor="@color/white"
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/img_copy_refer_code"
-                android:src="@drawable/ic_copy"/>
 
+                android:textAlignment="center"
+                android:layout_margin="12dp"/>
         </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
 
-        <TextView
+
+
+
+
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Invite Friends"
-            android:id="@+id/txtInviteFriend"
-            android:padding="16dp"
-            android:textSize="12sp"
-            android:background="@drawable/bg_icons"
-            android:textAlignment="center"
-            android:layout_margin="12dp"/>
 
-        <LinearLayout
-            android:layout_marginTop="16dp"
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Konodass,Gilgit"
+                    android:id="@+id/txtAddress"
+                    android:textSize="10sp"
+                    android:padding="16dp"
+
+                    android:textAlignment="center"
+                    android:layout_margin="12dp"/>
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/btnInvitations"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_icons"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+            <LinearLayout
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Invitations"
-                android:layout_weight="3"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:padding="16dp"
 
-                android:src="@drawable/ic_forward"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Referral code : 123456"
+                    android:layout_weight="3"
+                    android:textSize="10sp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/txtReferralCode"
+                    android:textColor="@color/black"
+                    />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/img_copy_refer_code"
+                    android:src="@drawable/ic_copy"/>
+
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/btnDeposits"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_icons"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Invite Friends"
+                    android:id="@+id/txtInviteFriend"
+                    android:padding="8dp"
+                    android:textSize="12sp"
+
+                    android:textAlignment="center"
+                    android:layout_margin="12dp"/>
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+            <LinearLayout
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deposit Details"
-                android:layout_weight="3"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:padding="16dp"
+                android:id="@+id/btnInvitations"
 
-                android:src="@drawable/ic_forward"/>
 
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_marginTop="16dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Invitations"
+                    android:layout_weight="3"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_forward"
+                    app:tint="@color/black" />
+
+            </LinearLayout>
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:id="@+id/btnWithdrawRequest"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_icons"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Withdraw request"
-                android:layout_weight="3"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
 
-                android:src="@drawable/ic_forward"/>
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
 
-        </LinearLayout>
-        <TextView
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:id="@+id/btnDeposits"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Deposit Details"
+                        android:layout_weight="3"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_forward"
+                        app:tint="@color/black" />
+
+                </LinearLayout>
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Logout"
-            android:id="@+id/btnLogout"
-            android:padding="16dp"
-            android:textSize="12sp"
-            android:background="@drawable/bg_icons"
-            android:textAlignment="center"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-           android:layout_marginTop="24dp"/>
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="basin"
+            app:neumorph_strokeWidth="8dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:id="@+id/btnWithdrawRequest"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Withdraw request"
+                        android:layout_weight="3"
+                        android:textSize="10sp"
+                        android:textColor="@color/black"
+                        />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:tint="@color/black"
+                        android:src="@drawable/ic_forward"/>
+
+                </LinearLayout>
+
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            app:cardCornerRadius="5dp"
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeWidth="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Logout"
+                    android:id="@+id/btnLogout"
+                    android:padding="16dp"
+                    android:textSize="12sp"
+
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
     </LinearLayout>
 
 

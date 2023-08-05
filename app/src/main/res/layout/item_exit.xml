@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/darkcolorbg"
+    android:background="@color/white"
     android:orientation="vertical"
 
     app:cardElevation="3dp"
@@ -11,7 +11,7 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:background="@color/darkcolorbg"
+
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_height="wrap_content">
@@ -23,7 +23,7 @@
        android:layout_marginTop="16dp"
        android:layout_height="wrap_content"
        android:text="Are you sure you want to exit !"
-       android:textColor="@color/white"/>
+       android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_marginTop="16dp"
@@ -31,31 +31,62 @@
     android:layout_gravity="center"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+        <soup.neumorphism.NeumorphButton
 
-    <TextView
-        android:id="@+id/btnYes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yes"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:layout_margin="5dp"
-        android:fontFamily="@font/poppins_bold"
-        android:padding="8dp"
-        android:background="@color/purple"/>
-        <TextView
-            android:id="@+id/btnNo"
+            android:id="@+id/btnYes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No"
+            android:layout_height="60dp"
+            android:text="Yes"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_margin="5dp"
             android:fontFamily="@font/poppins_bold"
             android:padding="8dp"
-            android:background="@color/red"/>
+            android:background="@color/purple"
+
+
+            app:neumorph_strokeWidth="8dp"
+
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+
+            android:gravity="center_vertical"
+
+            android:textAllCaps="false"
+
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            app:neumorph_shapeType="flat" />
+
+
+        <soup.neumorphism.NeumorphButton
+
+            android:id="@+id/btnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="No"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="8dp"
+            android:background="@color/red"
+
+            app:neumorph_strokeWidth="8dp"
+
+            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+            app:neumorph_shadowElevation="8dp"
+
+            android:gravity="center_vertical"
+
+            android:textAllCaps="false"
+
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            app:neumorph_shapeType="flat" />
+
 </LinearLayout>
 
 

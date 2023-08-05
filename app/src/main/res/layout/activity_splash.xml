@@ -3,25 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#000F26"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".ui.activities.SplashActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/app_logo"
-        android:transitionName="logo_image"
-
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -31,7 +17,7 @@
         android:fontFamily="@font/bungee"
         android:text="Passive Income"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="48sp"
         android:transitionName="logo_text"
         app:layout_constraintBottom_toTopOf="@+id/textView2"

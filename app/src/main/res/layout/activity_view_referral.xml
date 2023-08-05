@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="User details"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

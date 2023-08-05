@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Quick and Seure"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/img_slider"
@@ -40,7 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="12sp"
 android:fontFamily="@font/poppins_regular"
 

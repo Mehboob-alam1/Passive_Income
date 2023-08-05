@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textColor="@color/white"
 
-    android:text="031719181460"
-    android:id="@+id/txtId"
-    android:padding="16dp"
-    android:textSize="10sp"
-    android:background="@drawable/bg_icons"
-    android:textAlignment="center"
+<soup.neumorphism.NeumorphCardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="12dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    android:padding="16dp"
+    app:cardCornerRadius="5dp"
+    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+    app:neumorph_shadowElevation="8dp"
+    app:neumorph_shapeType="basin"
+    app:neumorph_strokeWidth="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:orientation="horizontal">
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+
+            android:text="031719181460"
+            android:id="@+id/txtId"
+
+            android:textSize="10sp"
+
+            android:textAlignment="center"
+
+            xmlns:android="http://schemas.android.com/apk/res/android" />
+    </LinearLayout>
+</soup.neumorphism.NeumorphCardView>
+

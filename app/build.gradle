@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mehboob.passiveincome'
+    namespace 'com.mehboob.crypto'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mehboob.passiveincome"
+        applicationId "com.mehboob.crypto"
         minSdk 23
         targetSdk 33
         versionCode 3

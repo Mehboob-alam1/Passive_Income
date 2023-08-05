@@ -3,532 +3,355 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.DepositActivity">
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
     android:background="@color/white"
-    android:layout_height="wrap_content"
     tools:context=".ui.activities.DepositActivity">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/img_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deposit"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins_bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_back" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-        <LinearLayout
-            android:id="@+id/linePackage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Package Selected"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/txtSelectedPackage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Basic"
-                android:textAlignment="center"
-                android:textColor="@color/red" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lineBank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Bank Account"
-                android:textAlignment="center"
-
-                android:textAllCaps="true"
-                android:textColor="@color/black" />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="IBAN"
-    android:textColor="@color/black"
-    android:fontFamily="@font/poppins_medium"/>
-
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-
-                    android:orientation="horizontal"
-
-                    android:padding="12dp">
-
-                    <TextView
-                        android:id="@+id/txtBankAccountNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Bank account number"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/img_copy_bank_number"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_copy" />
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Owner name"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"/>
-
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:id="@+id/txtBankAccountName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Account name"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/img_copy_bank_name"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_copy" />
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bank name"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"/>
-
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:id="@+id/txtBankName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Bank name"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/copy_bank_name"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_copy" />
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:id="@+id/lineEasy"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Easypaisa"
-                android:textAllCaps="true"
-                android:fontFamily="@font/poppins_regular"
-
-                android:textColor="@color/black"
-                android:textAlignment="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Easypaisa account number "
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_medium"/>
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Easypaisa account number"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:id="@+id/txtEasyPaisaAccountNumber"
-                        android:textColor="@color/black"
-                        />
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:id="@+id/img_copy_easypaisa_number"
-                        android:src="@drawable/ic_copy"/>
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Easypaisa account name "
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"/>
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Account name"
-                        android:id="@+id/txtEasyPaisaAccountName"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:textColor="@color/black"
-                        />
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:id="@+id/img_copy_easypaisa_name"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:src="@drawable/ic_copy"/>
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="16dp"
-            android:id="@+id/lineJazz"
-
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Jazzcash"
-                android:fontFamily="@font/poppins_regular"
-
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textAlignment="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Jazzcash account number "
-                android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"/>
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jazzcash account number"
-                        android:id="@+id/txtJazzCashAccountNumber"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:textColor="@color/black"
-                        />
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:id="@+id/img_copy_jazzcash_number"
-                        android:src="@drawable/ic_copy"/>
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Jazzcash account name "
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"/>
-
-            <soup.neumorphism.NeumorphCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-                app:neumorph_shadowElevation="8dp"
-                app:neumorph_shapeType="basin"
-                app:neumorph_strokeWidth="8dp">
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Account name"
-                        android:layout_weight="3"
-                        android:id="@+id/txtJazzCashAccountName"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:textColor="@color/black"
-                        />
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:id="@+id/img_copy_jazzcash_name"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="12sp"
-                        android:src="@drawable/ic_copy"/>
-
-                </LinearLayout>
-            </soup.neumorphism.NeumorphCardView>
-
-
-
-        </LinearLayout>
+        android:background="@color/white"
+        tools:context=".ui.activities.DepositActivity">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_aboutus"
-            android:visibility="gone"
-            android:scaleType="center"
-            android:id="@+id/imgScreenShot"/>
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/img_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <soup.neumorphism.NeumorphButton
-            android:id="@+id/btnUploadScreenShot"
-            android:layout_width="match_parent"
-            app:neumorph_strokeWidth="8dp"
-
-            app:neumorph_backgroundColor="@color/colorBackgroundDarker"
-            app:neumorph_shadowElevation="8dp"
-            android:layout_height="80dp"
-            android:gravity="center_vertical"
-            android:text="Upload screenshot"
-            android:textAlignment="center"
-            android:textAllCaps="false"
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Deposit"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"
-            app:neumorph_shapeType="flat" />
-
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linePackage"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="System"
-                android:fontFamily="@font/poppins_bold"
-                android:textColor="@color/black" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="1. Get 5% on your first deposit"
-                android:textColor="@color/red" />
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Package Selected"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txtSelectedPackage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Basic"
+                    android:textAlignment="center"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineUsdt"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="2. Upload screenshot must otherwise your balance
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Copy this address and send payment on this address for investment"
+
+
+
+                    android:textColor="@color/black" />
+
+
+
+                <soup.neumorphism.NeumorphCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="basin"
+                    app:neumorph_strokeWidth="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+
+                        android:orientation="horizontal"
+
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/txtUsdtAccountNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Bank account number"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/img_copy_usdt_number"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_copy" />
+
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineBtc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Copy this address and send payment on this address for investment"
+
+
+
+                    android:textColor="@color/black" />
+
+
+
+                <soup.neumorphism.NeumorphCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="basin"
+                    app:neumorph_strokeWidth="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/txtBtcAccountNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Easypaisa account number"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/img_copy_btc_number"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_copy" />
+
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineEth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Copy this address and send payment on this address for investment"
+
+
+
+                    android:textColor="@color/black" />
+
+
+                <soup.neumorphism.NeumorphCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                    app:neumorph_shadowElevation="8dp"
+                    app:neumorph_shapeType="basin"
+                    app:neumorph_strokeWidth="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/txtEthAccountNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Jazzcash account number"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/img_copy_eth_number"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_copy" />
+
+                    </LinearLayout>
+                </soup.neumorphism.NeumorphCardView>
+
+
+
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgScreenShot"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_aboutus"
+                android:visibility="gone" />
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/btnUploadScreenShot"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:text="Upload screenshot"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+                app:neumorph_shadowElevation="8dp"
+                app:neumorph_shapeType="flat"
+                app:neumorph_strokeWidth="8dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="System"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="1. Get 5% on your first deposit"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="2. Upload screenshot must otherwise your balance
 cant reach"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black" />
+                    android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="3. Within 30 min will reach your balance if not then
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="3. Within 30 min will reach your balance if not then
 contact us on WhatsApp"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black" />
+                    android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="4. Minimum deposit amount  Rs 1000"
-                android:textColor="@color/red" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="4. Minimum deposit amount  Rs 1000"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

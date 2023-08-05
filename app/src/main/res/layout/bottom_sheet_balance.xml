@@ -36,14 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/balance_enter_text_urdu"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+
 
         <TextView
             android:layout_width="match_parent"
