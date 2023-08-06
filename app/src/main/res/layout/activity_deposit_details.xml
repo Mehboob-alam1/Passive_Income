@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.DepositDetailsActivity" >
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.DepositDetailsActivity">
 
 
@@ -21,7 +21,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/img_back"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Details "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -55,61 +55,116 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Deposit Through"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/txtDepositThrough"
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:neumorph_strokeWidth="8dp"
+
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bg_icons"
-            android:padding="16dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtDepositThrough"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+
+                android:padding="16dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Deposit balance"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:neumorph_strokeWidth="8dp"
 
-        <TextView
-            android:id="@+id/txtBalanceDeposit"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/bg_icons"
-            android:padding="16dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtBalanceDeposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
+                android:padding="16dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Date deposit"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:neumorph_strokeWidth="8dp"
 
-        <TextView
-            android:id="@+id/txtDateDeposit"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/bg_icons"
-            android:padding="16dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtDateDeposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
+                android:padding="16dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+
 
 
         <TextView
@@ -117,27 +172,44 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Total Balance"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
+    <soup.neumorphism.NeumorphCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:neumorph_strokeWidth="8dp"
 
-        <TextView
-            android:id="@+id/txtTotalBalance"
+        app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+        app:neumorph_shadowElevation="8dp"
+        app:neumorph_shapeType="basin">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/bg_icons"
-            android:padding="16dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTotalBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_icons"
+                android:padding="16dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </soup.neumorphism.NeumorphCardView>
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Verification"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
@@ -154,7 +226,7 @@
             android:text="Pending.."
 
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:visibility="gone"
             tools:ignore="RtlCompat" />
@@ -175,18 +247,23 @@
 
 
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             tools:ignore="RtlCompat" />
 
-<androidx.cardview.widget.CardView
+<soup.neumorphism.NeumorphCardView
     android:layout_width="match_parent"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
+    app:neumorph_strokeWidth="8dp"
+
+    app:neumorph_backgroundColor="@color/colorBackgroundDarker"
+    app:neumorph_shadowElevation="8dp"
+    app:neumorph_shapeType="pressed"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/darkcolorbg"
+
         android:layout_height="wrap_content" >
         <ImageView
             android:layout_width="match_parent"
@@ -197,7 +274,7 @@
     </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+</soup.neumorphism.NeumorphCardView>
     </LinearLayout>
 
 

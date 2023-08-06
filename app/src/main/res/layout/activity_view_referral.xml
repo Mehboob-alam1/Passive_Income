@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/edittext_bg"
+    android:background="@color/white"
     tools:context=".ui.activities.ViewReferralActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/img_back"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +49,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="User name"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:text="0"
 
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
@@ -73,7 +73,7 @@
             android:text=""
             android:textAlignment="center"
 
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
 

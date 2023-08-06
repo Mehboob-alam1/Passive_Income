@@ -27,7 +27,7 @@
             app:neumorph_strokeWidth="8dp"
             app:neumorph_backgroundColor="@color/colorBackgroundDarker"
             app:neumorph_shadowElevation="8dp"
-            android:src="@drawable/img_back"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
             app:neumorph_shapeType="flat"
 
             app:layout_constraintStart_toStartOf="parent"
