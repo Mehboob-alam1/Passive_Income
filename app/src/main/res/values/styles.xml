@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <style name="noactiondisplay" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -30,6 +30,15 @@
     <style name="BottomSheetStyle"
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@color/darkcolorbg</item>
+
+    </style>
+
+    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/purple</item>
+        <item name="android:textColorSecondary">@color/purple</item>
+
+        <item name="itemTextColor">@color/purple</item>
+        <item name="itemIconTint">@color/purple</item>
 
     </style>
 </resources>

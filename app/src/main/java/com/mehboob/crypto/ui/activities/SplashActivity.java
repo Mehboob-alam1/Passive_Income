@@ -12,20 +12,22 @@ import com.mehboob.crypto.R;
 import com.mehboob.crypto.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
-private ActivitySplashBinding binding;
-private Animation topAnim,bottomAnim;
+    private ActivitySplashBinding binding;
+    private Animation topAnim, bottomAnim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivitySplashBinding.inflate(getLayoutInflater());
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 //Set animation to elements
 
-     binding.   textView.setAnimation(bottomAnim);
-       binding. textView2.setAnimation(bottomAnim);
+        binding.textView.setAnimation(bottomAnim);
+        binding.textView2.setAnimation(bottomAnim);
+        binding.imageView.setAnimation(topAnim);
         new Handler().postDelayed(new Runnable() {
 
 // Using handler with postDelayed called runnable run method
@@ -44,6 +46,6 @@ private Animation topAnim,bottomAnim;
 
             }
 
-        }, 5*1000);
+        }, 5 * 1000);
     }
 }

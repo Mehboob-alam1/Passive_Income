@@ -8,6 +8,15 @@
     tools:context=".ui.activities.SplashActivity">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/crypto"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +24,7 @@
         android:layout_height="wrap_content"
 
         android:fontFamily="@font/bungee"
-        android:text="Passive Income"
+        android:text="Crypto Chain"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="48sp"

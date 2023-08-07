@@ -133,9 +133,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        binding.btnPaymentRules.setOnClickListener(v -> {
-            startActivity(new Intent(requireContext(), PaymentRulesActivity.class));
-        });
+
         binding.btnAboutUs.setOnClickListener(v -> {
             startActivity(new Intent(requireContext(), AboutUsActivity.class));
         });
