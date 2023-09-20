@@ -41,7 +41,7 @@ public class WithdrawActivity extends AppCompatActivity {
 
         sharedPref = new SharedPref(this);
 
-
+        binding.txtAccountName.setText("USDT (BEP 20)");
         withdrawRef = FirebaseDatabase.getInstance().getReference("Withdraws");
         balanceRef = FirebaseDatabase.getInstance().getReference("Balance");
         binding.btnBack.setOnClickListener(v -> {
@@ -55,18 +55,18 @@ public class WithdrawActivity extends AppCompatActivity {
             userCurrentBalance = Integer.parseInt(getIntent().getStringExtra("totalBalance"));
             binding.txtCurrentBalance.setText("Available balance " + userCurrentBalance);
         }
+
         binding.txtAccountName.setText(sharedPref.fetchAccount());
         binding.btnConfirmWithDraw.setOnClickListener(v -> {
             if (binding.etAmount.getText().toString().isEmpty())
                 Toast.makeText(this, "Enter amount ", Toast.LENGTH_SHORT).show();
             else if (binding.etAccountNumber.getText().toString().isEmpty())
                 Toast.makeText(this, "Enter account number", Toast.LENGTH_SHORT).show();
-            else if (binding.etOwnerName.getText().toString().isEmpty())
-                Toast.makeText(this, "Enter real name of owner", Toast.LENGTH_SHORT).show();
+
             else if (Integer.parseInt(binding.etAmount.getText().toString()) > userCurrentBalance)
                 Toast.makeText(this, "Not much balance in wallet", Toast.LENGTH_SHORT).show();
-            else if (Integer.parseInt(binding.etAmount.getText().toString())<200)
-                Toast.makeText(this, "Minimum withdraw balance is 200", Toast.LENGTH_SHORT).show();
+            else if (Integer.parseInt(binding.etAmount.getText().toString())<5)
+                Toast.makeText(this, "Minimum withdraw balance is 5$", Toast.LENGTH_SHORT).show();
             else {
                 currentTimeStamp = System.currentTimeMillis();
                 pushId = UUID.randomUUID().toString();
@@ -82,7 +82,7 @@ public class WithdrawActivity extends AppCompatActivity {
                             if (hoursDifference >= 24) {
                                 dialog.show();
                                 requestWithdraw(FirebaseAuth.getInstance().getCurrentUser().getUid(), pushId,
-                                        false, binding.etAmount.getText().toString(), binding.etAccountNumber.getText().toString(), binding.etOwnerName.getText().toString(), String.valueOf(currentTimeStamp));
+                                        false, binding.etAmount.getText().toString(), binding.etAccountNumber.getText().toString(), "", String.valueOf(currentTimeStamp));
                             } else {
                                 Toast.makeText(WithdrawActivity.this, "You can withdraw only once in 24 hours", Toast.LENGTH_SHORT).show();
                             }
@@ -94,7 +94,7 @@ public class WithdrawActivity extends AppCompatActivity {
                         } else {
                             dialog.show();
                             requestWithdraw(FirebaseAuth.getInstance().getCurrentUser().getUid(), pushId,
-                                    false, binding.etAmount.getText().toString(), binding.etAccountNumber.getText().toString(), binding.etOwnerName.getText().toString(), String.valueOf(currentTimeStamp));
+                                    false, binding.etAmount.getText().toString(), binding.etAccountNumber.getText().toString(), "", String.valueOf(currentTimeStamp));
                         }
                     }
 

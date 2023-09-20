@@ -45,17 +45,18 @@ public class CreateAccountActivity extends AppCompatActivity {
     private boolean isProfileCompleted;
     private SharedPref sharedPref;
     ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-sharedPref= new SharedPref(this);
+        sharedPref = new SharedPref(this);
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference("Users");
-        storageReference= FirebaseStorage.getInstance().getReference("Users");
+        storageReference = FirebaseStorage.getInstance().getReference("Users");
         userReferralCode = UUID.randomUUID().toString().substring(0, 8);
-        dialog= new ProgressDialog(this);
+        dialog = new ProgressDialog(this);
 
         dialog.setMessage("Please wait......");
         dialog.setCancelable(false);
@@ -126,7 +127,7 @@ sharedPref= new SharedPref(this);
     }
 
     private void createAccount(String email, String password, String first_name, String sur_name, String phone_number, String referral_id, String address) {
-       dialog.show();
+        dialog.show();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -137,11 +138,11 @@ sharedPref= new SharedPref(this);
 //                        binding.textCreate.setVisibility(View.VISIBLE);
 //                        binding.progressSignUp.setVisibility(View.GONE);
 //         binding.textCreate.setText("Authenticated ! Save the data");
-                        uploadImage(uri,new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId,"","","",false,false,String.valueOf(System.currentTimeMillis())));
-                       // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
+                        uploadImage(uri, new User(binding.etEmail.getText().toString(), binding.etPassword.getText().toString(), binding.etFirstName.getText().toString(), binding.etSurname.getText().toString(), binding.etPhoneNumber.getText().toString(), userReferralCode, binding.etAddress.getText().toString(), userId, "", "", "", false, false, String.valueOf(System.currentTimeMillis())));
+                        // uploadData(email, password, first_name, sur_name, phone_number, referral_id, address, userId);
                     } else {
                         // If sign in fails, display a message to the user.
-                      dialog.dismiss();
+                        dialog.dismiss();
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
@@ -155,12 +156,12 @@ sharedPref= new SharedPref(this);
 
         mRef.child(userId).setValue(user).addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()) {
-             dialog.dismiss();
+                dialog.dismiss();
                 sharedPref.saveIsUser(true);
                 updateUI();
                 Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
             } else {
-               dialog.dismiss();
+                dialog.dismiss();
                 Toast.makeText(CreateAccountActivity.this, "Something went wrong! Try again", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e -> Toast.makeText(CreateAccountActivity.this, "Error adding data : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
@@ -169,8 +170,8 @@ sharedPref= new SharedPref(this);
     private void updateUI() {
 
 
-        Intent i = new Intent(CreateAccountActivity.this,CheckReferralActivity.class);
-        i.putExtra("code",binding.etReferralId.getText().toString());
+        Intent i = new Intent(CreateAccountActivity.this, CheckReferralActivity.class);
+        i.putExtra("code", binding.etReferralId.getText().toString());
         startActivity(i);
 
 //        startActivity(new Intent(CreateAccountActivity.this, CheckReferralActivity.class));
@@ -186,54 +187,54 @@ sharedPref= new SharedPref(this);
             binding.imgUserProfile.setImageURI(uri);
         }
     }
-    private void uploadImage(Uri imageUri,User user) {
+
+    private void uploadImage(Uri imageUri, User user) {
 
         // Create a reference to the image file in Firebase Storage
         String imageName = UUID.randomUUID().toString() + ".jpg";
-        StorageReference imageReference=        storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Image");
+        StorageReference imageReference = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Image");
 
-       dialog.show();
+        dialog.show();
         // Upload image to Firebase Storage
         UploadTask uploadTask = imageReference.putFile(imageUri);
         uploadTask.addOnSuccessListener(taskSnapshot -> {
             // Get the download URL of the image from Firebase Storage
             imageReference.getDownloadUrl().addOnSuccessListener(downloadUrl -> {
 
-              uploadData(new User(user.getEmail(),user.getPassword(),user.getFirst_name(),user.getSur_name(),user.getPhone_number(),user.getReferral_id(),user.getAddress(),user.getUser_id(),downloadUrl.toString(),"","",false,false,String.valueOf(System.currentTimeMillis())));
+                uploadData(new User(user.getEmail(), user.getPassword(), user.getFirst_name(), user.getSur_name(), user.getPhone_number(), user.getReferral_id(), user.getAddress(), user.getUser_id(), downloadUrl.toString(), "", "", false, false, String.valueOf(System.currentTimeMillis())));
 
                 Toast.makeText(getApplicationContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
             });
         }).addOnFailureListener(e -> {
             // Display an error message to the user
-          dialog.dismiss();
+            dialog.dismiss();
             Toast.makeText(getApplicationContext(), "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 
 
-
     private void checkIfProfileCompleted(String userId) {
 
         mRef.child(userId)
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.exists()){
-                             User user =snapshot.getValue(User.class);
-                             if (user.getCnic_front().isEmpty()){
-                                 Toast.makeText(CreateAccountActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
-                                 startActivity(new Intent(CreateAccountActivity.this,HomeActivity.class));
-                             }else {
-
-                             }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            User user = snapshot.getValue(User.class);
+                            if (user.getCnic_front().isEmpty()) {
+                                Toast.makeText(CreateAccountActivity.this, "Cnic not added", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
+                            } else {
 
                             }
-                        });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
     }
 }
